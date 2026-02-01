@@ -4,6 +4,7 @@ import pandas as pd
 import google.genai as genai
 import os
 import json
+import base64
 from typing import Optional
 
 # File per salvare le preferenze utente
@@ -739,7 +740,6 @@ def build_pdf_from_markdown(md_text: str) -> Optional[bytes]:
     pdf.set_auto_page_break(auto=True, margin=10)
     
     page_width = pdf.w - pdf.l_margin - pdf.r_margin
-    page_height = pdf.h - pdf.t_margin - pdf.b_margin
     
     def clean_markdown(text):
         """Rimuove i marcatori markdown dal testo."""
@@ -748,10 +748,6 @@ def build_pdf_from_markdown(md_text: str) -> Optional[bytes]:
     def is_bold_text(text):
         """Controlla se il testo è in grassetto markdown."""
         return text.strip().startswith("**") and text.strip().endswith("**")
-
-    def estimate_table_height(rows, row_height):
-        """Stima l'altezza totale della tabella."""
-        return len(rows) * row_height + 5
 
     def render_table(table_lines):
         # Parse table lines
@@ -818,6 +814,7 @@ def build_pdf_from_markdown(md_text: str) -> Optional[bytes]:
         # Stima altezza tabella
         table_height = sum(calc_row_height(r, col_widths) for r in rows) + 10
         space_left = pdf.h - pdf.b_margin - pdf.get_y()
+        page_height = pdf.h - pdf.t_margin - pdf.b_margin
         
         # Se la tabella non entra, vai a nuova pagina
         if table_height > space_left and space_left < page_height * 0.5:
@@ -962,9 +959,6 @@ def build_pdf_from_markdown(md_text: str) -> Optional[bytes]:
     return pdf.output(dest="S").encode("latin-1")
 
 # --- CARICAMENTO DATABASE ---
-import os
-
-# Funzione per ottenere il primo modello che supporta generateContent
 @st.cache_data
 def get_available_model():
     try:
@@ -1053,8 +1047,6 @@ st.markdown('<h1 class="main-header">🏋️ Hevy AI Architect</h1>', unsafe_all
 st.markdown('<p class="sub-header">Genera schede di allenamento personalizzate con l\'intelligenza artificiale</p>', unsafe_allow_html=True)
 
 # Statistiche database
-# (mobile hint già inserito sopra)
-# Statistiche database
 col_stat1, col_stat2, col_stat3 = st.columns(3)
 with col_stat1:
     st.metric("💪 Esercizi", f"{len(df_exercises)}+")
@@ -1070,8 +1062,6 @@ with col_stat3:
 spinner_placeholder = st.empty()
 
 # Galleria immagini centrale con dissolvenza
-import base64
-
 def get_image_base64(image_path):
     """Converte un'immagine in base64 per embedding HTML."""
     try:
