@@ -458,6 +458,64 @@ st.markdown("""
     
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
+    
+    /* ===== LOADING BAR CUSTOM ===== */
+    .loading-container {
+        text-align: center;
+        padding: 2rem 1rem;
+        margin: 1rem 0;
+    }
+    
+    .loading-text {
+        color: #FFFFFF;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        animation: pulse-text 1.5s ease-in-out infinite;
+    }
+    
+    .loading-bar-wrapper {
+        width: 100%;
+        max-width: 500px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0, 255, 128, 0.2);
+    }
+    
+    .loading-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #00ff88, #00ff44, #88ff00);
+        border-radius: 10px;
+        animation: loading-progress 12s ease-out forwards;
+        box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff44;
+    }
+    
+    @keyframes loading-progress {
+        0% { width: 0%; }
+        10% { width: 15%; }
+        30% { width: 35%; }
+        50% { width: 55%; }
+        70% { width: 75%; }
+        90% { width: 90%; }
+        100% { width: 95%; }
+    }
+    
+    @keyframes pulse-text {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+    }
+    
+    .loading-subtext {
+        color: #00ff88;
+        font-size: 0.85rem;
+        margin-top: 0.8rem;
+        font-weight: 400;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
     footer {visibility: hidden;}
     
     /* Divider */
@@ -1221,14 +1279,24 @@ if generate_btn:
     if df_exercises.empty:
         st.error("Errore: Il file 'exercises_db.csv' non è stato trovato!")
     else:
-        with spinner_placeholder:
-            with st.spinner("L'IA sta analizzando la biomeccanica e costruendo il programma..."):
-                
-                # 1. Creiamo il contesto per l'IA (Prompt Engineering Avanzato)
-                # Trasformiamo il dataframe in una stringa di testo per darlo in pasto all'IA
-                exercises_list_str = df_exercises.to_string(index=False)
-                
-                prompt = f"""
+        # Mostra la barra di caricamento custom
+        with spinner_placeholder.container():
+            st.markdown('''
+            <div class="loading-container">
+                <div class="loading-text">🧬 L'IA sta analizzando la biomeccanica e costruendo il programma...</div>
+                <div class="loading-bar-wrapper">
+                    <div class="loading-bar"></div>
+                </div>
+                <div class="loading-subtext">Ottimizzazione esercizi in corso...</div>
+            </div>
+            ''', unsafe_allow_html=True)
+        
+        # Esegui la generazione
+        # 1. Creiamo il contesto per l'IA (Prompt Engineering Avanzato)
+        # Trasformiamo il dataframe in una stringa di testo per darlo in pasto all'IA
+        exercises_list_str = df_exercises.to_string(index=False)
+        
+        prompt = f"""
             Agisci come un Coach Esperto di biomeccanica e fisiologia sportiva.
             Il tuo compito è creare una scheda di allenamento di {days} giorni a settimana.
             
@@ -1280,42 +1348,41 @@ if generate_btn:
             - Femmina: includi focus su catena posteriore e glutei se coerente con gli obiettivi, prediligi varianti che riducano stress articolare su spalle/lombare.
 
             Restituisci output conciso, solo Markdown.
-                """
+        """
+        
+        try:
+            # 2. Chiamata all'IA - Usa il modello disponibile
+            model_to_use = get_available_model()
+            response = client.models.generate_content(
+                model=model_to_use,
+                contents=prompt
+            )
+            
+            # Pulisci la barra di caricamento
+            spinner_placeholder.empty()
+            
+            # 3. Estrai il testo dalla risposta (gestisce diversi formati API)
+            result_text = None
+            if hasattr(response, 'text') and response.text:
+                result_text = response.text
+            elif hasattr(response, 'candidates') and response.candidates:
+                candidate = response.candidates[0]
+                if hasattr(candidate, 'content') and candidate.content:
+                    if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                        result_text = candidate.content.parts[0].text
+            
+            if result_text:
+                st.success("✅ Scheda generata con successo!")
                 
-                try:
-                    # 2. Chiamata all'IA - Usa il modello disponibile
-                    model_to_use = get_available_model()
-                    response = client.models.generate_content(
-                        model=model_to_use,
-                        contents=prompt
-                    )
-                    
-                    # 3. Estrai il testo dalla risposta (gestisce diversi formati API)
-                    result_text = None
-                    if hasattr(response, 'text') and response.text:
-                        result_text = response.text
-                    elif hasattr(response, 'candidates') and response.candidates:
-                        candidate = response.candidates[0]
-                        if hasattr(candidate, 'content') and candidate.content:
-                            if hasattr(candidate.content, 'parts') and candidate.content.parts:
-                                result_text = candidate.content.parts[0].text
-                    
-                    if result_text:
-                        st.success("✅ Scheda generata con successo!")
-                        
-                        # Card risultato
-                        st.markdown('<div class="result-card">', unsafe_allow_html=True)
-                        st.markdown(result_text)
-                        st.markdown('</div>', unsafe_allow_html=True)
-                        
-                        # salva per esportazione
-                        st.session_state["plan_md"] = result_text
-                    else:
-                        st.error("❌ La risposta dell'AI è vuota. Riprova.")
-                        st.write("Debug response:", response)
-                    
-                except Exception as e:
-                    st.error(f"❌ Errore durante la generazione: {e}")
+                # salva per esportazione
+                st.session_state["plan_md"] = result_text
+            else:
+                st.error("❌ La risposta dell'AI è vuota. Riprova.")
+                st.write("Debug response:", response)
+            
+        except Exception as e:
+            spinner_placeholder.empty()
+            st.error(f"❌ Errore durante la generazione: {e}")
 
 # --- ESPORTAZIONE PDF ---
 if st.session_state.get("plan_md"):
