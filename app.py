@@ -677,6 +677,60 @@ df_exercises = load_data()
 st.markdown('<h1 class="main-header">🏋️ Hevy AI Architect</h1>', unsafe_allow_html=True)
 st.markdown('<p class="sub-header">Genera schede di allenamento personalizzate con l\'intelligenza artificiale</p>', unsafe_allow_html=True)
 
+# Indicatore mobile per aprire il menu (solo su mobile)
+st.markdown("""
+<style>
+    .mobile-hint {
+        display: none;
+    }
+    
+    @media (max-width: 768px) {
+        .mobile-hint {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(255,75,75,0.15) 0%, rgba(255,107,107,0.1) 100%);
+            border: 2px solid #FF4B4B;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin: 10px 0 20px 0;
+            animation: pulse-border 2s infinite;
+        }
+        
+        .mobile-hint-arrow {
+            font-size: 1.8rem;
+            color: #FF4B4B;
+            animation: bounce-left 1s infinite;
+        }
+        
+        .mobile-hint-text {
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .mobile-hint-text strong {
+            color: #FF6B6B;
+        }
+        
+        @keyframes bounce-left {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+        }
+        
+        @keyframes pulse-border {
+            0%, 100% { border-color: #FF4B4B; }
+            50% { border-color: #FF8E53; }
+        }
+    }
+</style>
+
+<div class="mobile-hint">
+    <span class="mobile-hint-arrow">↖️</span>
+    <span class="mobile-hint-text">Tocca <strong>≡</strong> in alto a sinistra per configurare il tuo allenamento!</span>
+</div>
+""", unsafe_allow_html=True)
+
 # Statistiche database
 col_stat1, col_stat2, col_stat3 = st.columns(3)
 with col_stat1:
