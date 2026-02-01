@@ -842,6 +842,9 @@ with col_stat2:
 with col_stat3:
     st.metric("🤖 Modello AI", "Gemini Pro")
 
+# Placeholder per lo spinner (apparirà SOPRA le foto)
+spinner_placeholder = st.empty()
+
 # Galleria immagini centrale con dissolvenza
 import base64
 
@@ -1051,13 +1054,14 @@ if generate_btn:
     if df_exercises.empty:
         st.error("Errore: Il file 'exercises_db.csv' non è stato trovato!")
     else:
-        with st.spinner("L'IA sta analizzando la biomeccanica e costruendo il programma..."):
-            
-            # 1. Creiamo il contesto per l'IA (Prompt Engineering Avanzato)
-            # Trasformiamo il dataframe in una stringa di testo per darlo in pasto all'IA
-            exercises_list_str = df_exercises.to_string(index=False)
-            
-            prompt = f"""
+        with spinner_placeholder:
+            with st.spinner("L'IA sta analizzando la biomeccanica e costruendo il programma..."):
+                
+                # 1. Creiamo il contesto per l'IA (Prompt Engineering Avanzato)
+                # Trasformiamo il dataframe in una stringa di testo per darlo in pasto all'IA
+                exercises_list_str = df_exercises.to_string(index=False)
+                
+                prompt = f"""
             Agisci come un Coach Esperto di biomeccanica e fisiologia sportiva.
             Il tuo compito è creare una scheda di allenamento di {days} giorni a settimana.
             
@@ -1109,42 +1113,42 @@ if generate_btn:
             - Femmina: includi focus su catena posteriore e glutei se coerente con gli obiettivi, prediligi varianti che riducano stress articolare su spalle/lombare.
 
             Restituisci output conciso, solo Markdown.
-            """
-            
-            try:
-                # 2. Chiamata all'IA - Usa il modello disponibile
-                model_to_use = get_available_model()
-                response = client.models.generate_content(
-                    model=model_to_use,
-                    contents=prompt
-                )
+                """
                 
-                # 3. Estrai il testo dalla risposta (gestisce diversi formati API)
-                result_text = None
-                if hasattr(response, 'text') and response.text:
-                    result_text = response.text
-                elif hasattr(response, 'candidates') and response.candidates:
-                    candidate = response.candidates[0]
-                    if hasattr(candidate, 'content') and candidate.content:
-                        if hasattr(candidate.content, 'parts') and candidate.content.parts:
-                            result_text = candidate.content.parts[0].text
-                
-                if result_text:
-                    st.success("✅ Scheda generata con successo!")
+                try:
+                    # 2. Chiamata all'IA - Usa il modello disponibile
+                    model_to_use = get_available_model()
+                    response = client.models.generate_content(
+                        model=model_to_use,
+                        contents=prompt
+                    )
                     
-                    # Card risultato
-                    st.markdown('<div class="result-card">', unsafe_allow_html=True)
-                    st.markdown(result_text)
-                    st.markdown('</div>', unsafe_allow_html=True)
+                    # 3. Estrai il testo dalla risposta (gestisce diversi formati API)
+                    result_text = None
+                    if hasattr(response, 'text') and response.text:
+                        result_text = response.text
+                    elif hasattr(response, 'candidates') and response.candidates:
+                        candidate = response.candidates[0]
+                        if hasattr(candidate, 'content') and candidate.content:
+                            if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                                result_text = candidate.content.parts[0].text
                     
-                    # salva per esportazione
-                    st.session_state["plan_md"] = result_text
-                else:
-                    st.error("❌ La risposta dell'AI è vuota. Riprova.")
-                    st.write("Debug response:", response)
-                
-            except Exception as e:
-                st.error(f"❌ Errore durante la generazione: {e}")
+                    if result_text:
+                        st.success("✅ Scheda generata con successo!")
+                        
+                        # Card risultato
+                        st.markdown('<div class="result-card">', unsafe_allow_html=True)
+                        st.markdown(result_text)
+                        st.markdown('</div>', unsafe_allow_html=True)
+                        
+                        # salva per esportazione
+                        st.session_state["plan_md"] = result_text
+                    else:
+                        st.error("❌ La risposta dell'AI è vuota. Riprova.")
+                        st.write("Debug response:", response)
+                    
+                except Exception as e:
+                    st.error(f"❌ Errore durante la generazione: {e}")
 
 # --- ESPORTAZIONE PDF ---
 if st.session_state.get("plan_md"):
