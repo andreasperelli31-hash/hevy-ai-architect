@@ -1178,6 +1178,14 @@ if generate_btn:
 
 # --- ESPORTAZIONE PDF ---
 if st.session_state.get("plan_md"):
+    # Mostra la scheda generata
+    st.markdown("---")
+    st.markdown("## 📋 La Tua Scheda di Allenamento")
+    st.markdown('<div class="result-card">', unsafe_allow_html=True)
+    st.markdown(st.session_state["plan_md"])
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Pulsante download PDF
     st.markdown("---")
     col_pdf1, col_pdf2, col_pdf3 = st.columns([1, 2, 1])
     with col_pdf2:
