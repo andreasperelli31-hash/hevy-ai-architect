@@ -348,14 +348,41 @@ st.title("🏋️‍♂️ Hevy AI Architect")
 st.markdown("Generatore di schede di allenamento basate sul database reale di Hevy.")
 
 # Liste opzioni
-GOALS_OPTIONS = ["Ipertrofia (Massa)", "Dimagrimento (Cutting)", "Forza Pura", "Miglioramento Posturale"]
-SPLIT_OPTIONS = ["Full Body", "Upper/Lower", "Push/Pull/Legs", "Bro Split (Gruppi Singoli)"]
+GOALS_OPTIONS = ["Ipertrofia (Massa)", "Dimagrimento (Cutting)", "Forza Pura", "Miglioramento Posturale", "Tonificazione"]
+SPLIT_OPTIONS = ["Full Body", "Alto/Basso", "Spinta/Tirata/Gambe", "Split per Gruppo Muscolare"]
 EQUIPMENT_OPTIONS = ["Con attrezzi", "Senza attrezzi"]
 SEX_OPTIONS = ["Maschio", "Femmina"]
-LEVEL_OPTIONS = ["Beginner", "Intermediate", "Pro"]
+LEVEL_OPTIONS = ["Principiante", "Esperto", "Super Esperto"]
+
+# Traduzione gruppi muscolari inglese -> italiano
+MUSCLE_TRANSLATION = {
+    "Chest": "Petto",
+    "Back": "Schiena",
+    "Shoulders": "Spalle",
+    "Biceps": "Bicipiti",
+    "Triceps": "Tricipiti",
+    "Legs": "Gambe",
+    "Quadriceps": "Quadricipiti",
+    "Hamstrings": "Femorali",
+    "Glutes": "Glutei",
+    "Calves": "Polpacci",
+    "Abs": "Addominali",
+    "Core": "Core",
+    "Forearms": "Avambracci",
+    "Traps": "Trapezio",
+    "Lats": "Dorsali",
+    "Lower Back": "Lombari",
+    "Full Body": "Tutto il Corpo",
+    "Cardio": "Cardio",
+    "Other": "Altro"
+}
+
+def translate_muscle(muscle):
+    """Traduce il nome del gruppo muscolare in italiano."""
+    return MUSCLE_TRANSLATION.get(muscle, muscle)
 
 with st.sidebar:
-    st.header("1. I tuoi Obiettivi")
+    st.header("1. Obiettivi")
     
     # Filtra goals salvati che sono ancora validi
     default_goals = [g for g in saved_prefs.get("goals", []) if g in GOALS_OPTIONS]
@@ -377,9 +404,15 @@ with st.sidebar:
     
     st.header("2. Dettagli")
     if not df_exercises.empty and 'muscle_group' in df_exercises.columns:
-        muscle_options = list(df_exercises['muscle_group'].unique())
-        default_focus = [f for f in saved_prefs.get("focus_area", []) if f in muscle_options]
-        focus_area = st.multiselect("Focus Muscolare (Opzionale)", muscle_options, default=default_focus)
+        muscle_options_raw = list(df_exercises['muscle_group'].unique())
+        # Traduci i nomi dei muscoli in italiano
+        muscle_options_translated = [translate_muscle(m) for m in muscle_options_raw]
+        # Mappa italiano -> inglese per il filtro
+        muscle_map_it_to_en = {translate_muscle(m): m for m in muscle_options_raw}
+        default_focus = [translate_muscle(f) for f in saved_prefs.get("focus_area", []) if f in muscle_options_raw or translate_muscle(f) in muscle_options_translated]
+        focus_area_it = st.multiselect("Focus Muscolare (Opzionale)", sorted(set(muscle_options_translated)), default=default_focus)
+        # Riconverti in inglese per il prompt
+        focus_area = [muscle_map_it_to_en.get(f, f) for f in focus_area_it]
     else:
         focus_area = []
         st.warning("Nessun dato disponibile per il filtro muscolare")
@@ -392,7 +425,12 @@ with st.sidebar:
     
     age = st.slider("Età", 16, 80, saved_prefs.get("age", 30))
     
-    level_idx = LEVEL_OPTIONS.index(saved_prefs.get("training_level", "Beginner")) if saved_prefs.get("training_level") in LEVEL_OPTIONS else 0
+    # Mappa vecchi valori ai nuovi per retrocompatibilità
+    old_level_map = {"Beginner": "Principiante", "Intermediate": "Esperto", "Pro": "Super Esperto"}
+    saved_level = saved_prefs.get("training_level", "Principiante")
+    if saved_level in old_level_map:
+        saved_level = old_level_map[saved_level]
+    level_idx = LEVEL_OPTIONS.index(saved_level) if saved_level in LEVEL_OPTIONS else 0
     training_level = st.selectbox("Livello", LEVEL_OPTIONS, index=level_idx)
     
     duration = st.slider("Durata seduta (min)", 30, 90, saved_prefs.get("duration", 60))
@@ -435,7 +473,7 @@ if generate_btn:
             ATTREZZATURA: {equipment_pref} (Con attrezzi → prediligi bilancieri, manubri, macchine; Senza attrezzi → prediligi corpo libero / elastici / varianti home)
             SESSO: {sex_pref} (seleziona varianti ed esercizi adeguati a comfort articolare e preferenze tipiche)
             ETA': {age} (adatta volume e intensità con progressioni adeguate all'età, cura mobilità e gestione carichi)
-            LIVELLO: {training_level} (Beginner: esercizi facili e stabili; Intermediate: esercizi intermedi con varianti controllate; Pro: esercizi complessi, carichi più alti, maggior densità)
+            LIVELLO: {training_level} (Principiante: esercizi facili e stabili; Esperto: esercizi intermedi con varianti controllate; Super Esperto: esercizi complessi, carichi più alti, maggior densità)
             
             VINCOLO FONDAMENTALE:
             Devi usare SOLO ed ESCLUSIVAMENTE gli esercizi presenti nel seguente database CSV. 
