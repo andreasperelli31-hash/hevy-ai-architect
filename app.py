@@ -400,6 +400,83 @@ st.markdown("""
     hr {
         border-color: rgba(255,107,107,0.3) !important;
     }
+    
+    /* ===== GALLERY IMAGES ===== */
+    .gallery-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 2rem auto;
+        padding: 20px;
+        max-width: 900px;
+    }
+    
+    .gallery-image {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(255, 75, 75, 0.3);
+        border: 3px solid transparent;
+        background: linear-gradient(145deg, #1f2b47, #16213e) padding-box,
+                    linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 50%, #FF8E53 100%) border-box;
+        animation: fadeInUp 1s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    .gallery-image:nth-child(1) {
+        animation-delay: 0.2s;
+    }
+    
+    .gallery-image:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+    
+    .gallery-image img {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 13px;
+        transition: transform 0.4s ease;
+    }
+    
+    .gallery-image:hover img {
+        transform: scale(1.03);
+    }
+    
+    .gallery-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255,75,75,0.1) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 1;
+        border-radius: 13px;
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-container {
+            flex-direction: column;
+            gap: 20px;
+            padding: 10px;
+        }
+        
+        .gallery-image img {
+            max-width: 100%;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -762,6 +839,46 @@ with col_stat2:
         st.metric("🎯 Gruppi Muscolari", "N/A")
 with col_stat3:
     st.metric("🤖 Modello AI", "Gemini Pro")
+
+# Galleria immagini centrale con dissolvenza
+import base64
+
+def get_image_base64(image_path):
+    """Converte un'immagine in base64 per embedding HTML."""
+    try:
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    except Exception:
+        return None
+
+photo_dir = os.path.join(os.path.dirname(__file__), "photo")
+photo30_path = os.path.join(photo_dir, "photo30.jpg")
+photo31_path = os.path.join(photo_dir, "photo31.jpg")
+
+# Prova anche estensioni alternative
+if not os.path.exists(photo30_path):
+    photo30_path = os.path.join(photo_dir, "photo30.png")
+if not os.path.exists(photo31_path):
+    photo31_path = os.path.join(photo_dir, "photo31.png")
+
+photo30_b64 = get_image_base64(photo30_path)
+photo31_b64 = get_image_base64(photo31_path)
+
+if photo30_b64 and photo31_b64:
+    # Determina il tipo MIME in base all'estensione
+    ext30 = "png" if photo30_path.endswith(".png") else "jpeg"
+    ext31 = "png" if photo31_path.endswith(".png") else "jpeg"
+    
+    st.markdown(f'''
+    <div class="gallery-container">
+        <div class="gallery-image">
+            <img src="data:image/{ext30};base64,{photo30_b64}" alt="Fitness Training">
+        </div>
+        <div class="gallery-image">
+            <img src="data:image/{ext31};base64,{photo31_b64}" alt="Workout">
+        </div>
+    </div>
+    ''', unsafe_allow_html=True)
 
 st.markdown("---")
 
