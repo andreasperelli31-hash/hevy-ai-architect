@@ -338,16 +338,25 @@ st.markdown("""
         margin: 1rem 0;
         border: 1px solid rgba(255,107,107,0.2);
         box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        overflow-x: auto;
+    }
+    
+    /* Tabelle scrollabili su mobile */
+    .result-card table {
+        width: 100%;
+        min-width: 500px;
     }
     
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
         .main-header {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
+            padding: 0 10px;
         }
         
         .sub-header {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            padding: 0 10px;
         }
         
         [data-testid="stSidebar"] {
@@ -355,21 +364,76 @@ st.markdown("""
         }
         
         .stButton > button {
-            padding: 1rem;
-            font-size: 1.1rem;
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        /* Tabelle più leggibili su mobile */
+        .stMarkdown table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
         
         .stMarkdown th, .stMarkdown td {
-            padding: 8px 4px;
-            font-size: 0.75rem;
+            padding: 6px 4px;
+            font-size: 0.7rem;
+            min-width: 60px;
+        }
+        
+        .stMarkdown th:first-child, .stMarkdown td:first-child {
+            min-width: 100px;
         }
         
         [data-testid="stMetric"] {
-            padding: 0.8rem;
+            padding: 0.6rem;
         }
         
         [data-testid="stMetric"] [data-testid="stMetricValue"] {
-            font-size: 1.5rem !important;
+            font-size: 1.3rem !important;
+        }
+        
+        [data-testid="stMetric"] label {
+            font-size: 0.75rem !important;
+        }
+        
+        /* Result card mobile */
+        .result-card {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 12px;
+        }
+        
+        /* Columns su mobile */
+        [data-testid="column"] {
+            padding: 0 5px !important;
+        }
+        
+        /* Download button mobile */
+        .stDownloadButton > button {
+            padding: 0.8rem;
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Extra small devices */
+    @media (max-width: 480px) {
+        .main-header {
+            font-size: 1.4rem;
+        }
+        
+        .sub-header {
+            font-size: 0.8rem;
+        }
+        
+        [data-testid="stMetric"] [data-testid="stMetricValue"] {
+            font-size: 1.1rem !important;
+        }
+        
+        .stMarkdown th, .stMarkdown td {
+            font-size: 0.65rem;
+            padding: 4px 2px;
         }
     }
     
@@ -470,13 +534,30 @@ st.markdown("""
     
     @media (max-width: 768px) {
         .gallery-container {
-            flex-direction: column;
-            gap: 20px;
+            flex-direction: row;
+            gap: 10px;
             padding: 10px;
+        }
+        
+        .gallery-image {
+            max-width: 48%;
         }
         
         .gallery-image img {
             max-width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .gallery-container {
+            gap: 8px;
+            padding: 8px;
+        }
+        
+        .gallery-image img {
+            max-height: 150px;
         }
     }
     
@@ -519,15 +600,23 @@ st.markdown("""
     @media (max-width: 768px) {
         .gallery-footer {
             flex-direction: row;
-            gap: 10px;
+            gap: 8px;
+            padding: 10px;
+            max-width: 100%;
         }
         
         .gallery-footer .gallery-image {
-            max-width: 45%;
+            max-width: 48%;
         }
         
         .gallery-footer .gallery-image img {
-            max-height: 120px;
+            max-height: 100px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .gallery-footer .gallery-image img {
+            max-height: 80px;
         }
     }
 </style>
