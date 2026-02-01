@@ -510,6 +510,32 @@ def build_pdf_from_markdown(md_text: str) -> Optional[bytes]:
         st.error("Installa il pacchetto fpdf: pip install fpdf==1.7.2")
         return None
 
+    def sanitize_text(text):
+        """Rimuove o sostituisce caratteri non supportati da latin-1."""
+        # Mappa emoji e caratteri speciali a testo ASCII
+        replacements = {
+            '✅': '[OK]', '❌': '[X]', '⚠️': '[!]', '💪': '', '🎯': '', 
+            '🤖': '', '📅': '', '📋': '', '🏠': '', '⚧': '', '🎂': '',
+            '📊': '', '⏱️': '', '🚀': '', '📥': '', '📚': '', '🏋️': '',
+            '❤️': '', '→': '->', '←': '<-', '↔': '<->', '•': '-',
+            '–': '-', '—': '-', '"': '"', '"': '"', ''': "'", ''': "'",
+            '…': '...', '°': 'deg', '×': 'x', '÷': '/', '≤': '<=',
+            '≥': '>=', '≠': '!=', '±': '+/-', '€': 'EUR', '£': 'GBP',
+            '¥': 'YEN', '©': '(c)', '®': '(R)', '™': '(TM)',
+        }
+        for old, new in replacements.items():
+            text = text.replace(old, new)
+        
+        # Rimuovi tutti i caratteri non latin-1
+        try:
+            return text.encode('latin-1', errors='ignore').decode('latin-1')
+        except Exception:
+            # Fallback: rimuovi tutti i caratteri non ASCII
+            return ''.join(c if ord(c) < 128 else '' for c in text)
+
+    # Pulisci il testo markdown all'inizio
+    md_text = sanitize_text(md_text)
+
     pdf = FPDF(orientation='L', format='A4')  # Landscape per tabelle più larghe
     pdf.add_page()
     pdf.set_auto_page_break(auto=True, margin=10)
