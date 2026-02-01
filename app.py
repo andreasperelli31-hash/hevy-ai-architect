@@ -56,7 +56,223 @@ def get_api_key():
 saved_prefs = load_preferences()
 
 # --- CONFIGURAZIONE ---
-st.set_page_config(page_title="Hevy AI Architect", page_icon="🏋️‍♂️", layout="wide")
+st.set_page_config(
+    page_title="Hevy AI Architect", 
+    page_icon="🏋️‍♂️", 
+    layout="wide",
+    initial_sidebar_state="collapsed"  # Migliore per mobile
+)
+
+# --- CSS PERSONALIZZATO PER MOBILE E DESIGN PROFESSIONALE ---
+st.markdown("""
+<style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    /* Variabili colori */
+    :root {
+        --primary-color: #FF4B4B;
+        --secondary-color: #1E1E1E;
+        --accent-color: #FF6B6B;
+        --success-color: #00C853;
+        --bg-dark: #0E1117;
+        --bg-card: #1E1E2E;
+        --text-primary: #FAFAFA;
+        --text-secondary: #B0B0B0;
+    }
+    
+    /* Font globale */
+    html, body, [class*="css"] {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    /* Header principale */
+    .main-header {
+        background: linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 50%, #FF8E53 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .sub-header {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Card container */
+    .stApp {
+        background: linear-gradient(180deg, #0E1117 0%, #1A1A2E 100%);
+    }
+    
+    /* Sidebar styling */
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1E1E2E 0%, #16162a 100%);
+        border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    [data-testid="stSidebar"] .stMarkdown h2 {
+        color: #FF6B6B;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(255,107,107,0.3);
+    }
+    
+    /* Bottoni */
+    .stButton > button {
+        width: 100%;
+        background: linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 0.8rem 1.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255,75,75,0.3);
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255,75,75,0.4);
+    }
+    
+    /* Download button */
+    .stDownloadButton > button {
+        background: linear-gradient(135deg, #00C853 0%, #00E676 100%);
+        box-shadow: 0 4px 15px rgba(0,200,83,0.3);
+    }
+    
+    .stDownloadButton > button:hover {
+        box-shadow: 0 6px 20px rgba(0,200,83,0.4);
+    }
+    
+    /* Selectbox e multiselect */
+    .stSelectbox, .stMultiSelect {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Slider */
+    .stSlider > div > div {
+        background-color: rgba(255,107,107,0.2);
+    }
+    
+    .stSlider > div > div > div {
+        background-color: #FF6B6B;
+    }
+    
+    /* Cards per risultati */
+    .result-card {
+        background: linear-gradient(145deg, #1E1E2E 0%, #252540 100%);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    
+    /* Tabelle */
+    .stMarkdown table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 1rem 0;
+    }
+    
+    .stMarkdown th {
+        background: linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 100%);
+        color: white;
+        padding: 12px 8px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+    
+    .stMarkdown td {
+        padding: 10px 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 0.9rem;
+    }
+    
+    .stMarkdown tr:hover td {
+        background: rgba(255,107,107,0.1);
+    }
+    
+    /* Spinner */
+    .stSpinner > div {
+        border-top-color: #FF6B6B !important;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 1.8rem;
+        }
+        
+        .sub-header {
+            font-size: 0.95rem;
+        }
+        
+        [data-testid="stSidebar"] {
+            width: 100% !important;
+            min-width: 100% !important;
+        }
+        
+        .stButton > button {
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .stMarkdown th, .stMarkdown td {
+            padding: 8px 4px;
+            font-size: 0.75rem;
+        }
+        
+        /* Stack tables on mobile */
+        .stMarkdown table {
+            font-size: 0.8rem;
+        }
+    }
+    
+    /* Info box styling */
+    .info-box {
+        background: rgba(255,107,107,0.1);
+        border-left: 4px solid #FF6B6B;
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+        margin: 1rem 0;
+    }
+    
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    
+    /* Expander styling */
+    .streamlit-expanderHeader {
+        background: rgba(255,107,107,0.1);
+        border-radius: 8px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # Ottieni API key
 GOOGLE_API_KEY = get_api_key()
@@ -344,8 +560,23 @@ def load_data():
 df_exercises = load_data()
 
 # --- INTERFACCIA UTENTE ---
-st.title("🏋️‍♂️ Hevy AI Architect")
-st.markdown("Generatore di schede di allenamento basate sul database reale di Hevy.")
+# Header professionale
+st.markdown('<h1 class="main-header">🏋️ Hevy AI Architect</h1>', unsafe_allow_html=True)
+st.markdown('<p class="sub-header">Genera schede di allenamento personalizzate con l\'intelligenza artificiale</p>', unsafe_allow_html=True)
+
+# Statistiche database
+col_stat1, col_stat2, col_stat3 = st.columns(3)
+with col_stat1:
+    st.metric("💪 Esercizi", f"{len(df_exercises)}+")
+with col_stat2:
+    if not df_exercises.empty and 'muscle_group' in df_exercises.columns:
+        st.metric("🎯 Gruppi Muscolari", len(df_exercises['muscle_group'].unique()))
+    else:
+        st.metric("🎯 Gruppi Muscolari", "N/A")
+with col_stat3:
+    st.metric("🤖 Modello AI", "Gemini Pro")
+
+st.markdown("---")
 
 # Liste opzioni
 GOALS_OPTIONS = ["Ipertrofia (Massa)", "Dimagrimento (Cutting)", "Forza Pura", "Miglioramento Posturale", "Tonificazione"]
@@ -382,7 +613,11 @@ def translate_muscle(muscle):
     return MUSCLE_TRANSLATION.get(muscle, muscle)
 
 with st.sidebar:
-    st.header("1. Obiettivi")
+    # Logo/Brand
+    st.markdown("### 🏋️ Configura il tuo Allenamento")
+    st.markdown("---")
+    
+    st.markdown("## 🎯 Obiettivi")
     
     # Filtra goals salvati che sono ancora validi
     default_goals = [g for g in saved_prefs.get("goals", []) if g in GOALS_OPTIONS]
@@ -390,19 +625,22 @@ with st.sidebar:
         default_goals = ["Ipertrofia (Massa)"]
     
     goals = st.multiselect(
-        "Obiettivi (seleziona uno o più)",
+        "Seleziona uno o più obiettivi",
         GOALS_OPTIONS,
-        default=default_goals
+        default=default_goals,
+        help="Puoi selezionare più obiettivi contemporaneamente"
     )
     if not goals:
         goals = ["Equilibrato"]
     
-    days = st.slider("Giorni a settimana", 2, 6, saved_prefs.get("days", 4))
+    days = st.slider("📅 Giorni a settimana", 2, 6, saved_prefs.get("days", 4))
     
     split_idx = SPLIT_OPTIONS.index(saved_prefs.get("split_type", "Full Body")) if saved_prefs.get("split_type") in SPLIT_OPTIONS else 0
-    split_type = st.selectbox("Tipo di Split", SPLIT_OPTIONS, index=split_idx)
+    split_type = st.selectbox("📋 Tipo di Split", SPLIT_OPTIONS, index=split_idx)
     
-    st.header("2. Dettagli")
+    st.markdown("---")
+    st.markdown("## 👤 Profilo Personale")
+    
     if not df_exercises.empty and 'muscle_group' in df_exercises.columns:
         muscle_options_raw = list(df_exercises['muscle_group'].unique())
         # Traduci i nomi dei muscoli in italiano
@@ -410,20 +648,23 @@ with st.sidebar:
         # Mappa italiano -> inglese per il filtro
         muscle_map_it_to_en = {translate_muscle(m): m for m in muscle_options_raw}
         default_focus = [translate_muscle(f) for f in saved_prefs.get("focus_area", []) if f in muscle_options_raw or translate_muscle(f) in muscle_options_translated]
-        focus_area_it = st.multiselect("Focus Muscolare (Opzionale)", sorted(set(muscle_options_translated)), default=default_focus)
+        focus_area_it = st.multiselect("🎯 Focus Muscolare (Opzionale)", sorted(set(muscle_options_translated)), default=default_focus, help="Lascia vuoto per un allenamento bilanciato")
         # Riconverti in inglese per il prompt
         focus_area = [muscle_map_it_to_en.get(f, f) for f in focus_area_it]
     else:
         focus_area = []
         st.warning("Nessun dato disponibile per il filtro muscolare")
     
-    equip_idx = EQUIPMENT_OPTIONS.index(saved_prefs.get("equipment_pref", "Con attrezzi")) if saved_prefs.get("equipment_pref") in EQUIPMENT_OPTIONS else 0
-    equipment_pref = st.selectbox("Attrezzatura", EQUIPMENT_OPTIONS, index=equip_idx)
+    # Due colonne per sesso e attrezzatura
+    col1, col2 = st.columns(2)
+    with col1:
+        sex_idx = SEX_OPTIONS.index(saved_prefs.get("sex_pref", "Maschio")) if saved_prefs.get("sex_pref") in SEX_OPTIONS else 0
+        sex_pref = st.selectbox("⚧ Sesso", SEX_OPTIONS, index=sex_idx)
+    with col2:
+        equip_idx = EQUIPMENT_OPTIONS.index(saved_prefs.get("equipment_pref", "Con attrezzi")) if saved_prefs.get("equipment_pref") in EQUIPMENT_OPTIONS else 0
+        equipment_pref = st.selectbox("🏠 Attrezzi", EQUIPMENT_OPTIONS, index=equip_idx)
     
-    sex_idx = SEX_OPTIONS.index(saved_prefs.get("sex_pref", "Maschio")) if saved_prefs.get("sex_pref") in SEX_OPTIONS else 0
-    sex_pref = st.selectbox("Sesso", SEX_OPTIONS, index=sex_idx)
-    
-    age = st.slider("Età", 16, 80, saved_prefs.get("age", 30))
+    age = st.slider("🎂 Età", 16, 80, saved_prefs.get("age", 30))
     
     # Mappa vecchi valori ai nuovi per retrocompatibilità
     old_level_map = {"Beginner": "Principiante", "Intermediate": "Esperto", "Pro": "Super Esperto"}
@@ -431,11 +672,24 @@ with st.sidebar:
     if saved_level in old_level_map:
         saved_level = old_level_map[saved_level]
     level_idx = LEVEL_OPTIONS.index(saved_level) if saved_level in LEVEL_OPTIONS else 0
-    training_level = st.selectbox("Livello", LEVEL_OPTIONS, index=level_idx)
+    training_level = st.selectbox("📊 Livello Esperienza", LEVEL_OPTIONS, index=level_idx)
     
-    duration = st.slider("Durata seduta (min)", 30, 90, saved_prefs.get("duration", 60))
+    duration = st.slider("⏱️ Durata seduta (min)", 30, 90, saved_prefs.get("duration", 60))
     
-    generate_btn = st.button("Genera Scheda AI 🧠", type="primary")
+    st.markdown("---")
+    
+    generate_btn = st.button("🚀 Genera Scheda AI", type="primary", use_container_width=True)
+    
+    # Info box
+    with st.expander("ℹ️ Come funziona"):
+        st.markdown("""
+        1. **Configura** i tuoi obiettivi e preferenze
+        2. **Genera** la scheda con l'AI
+        3. **Scarica** il PDF personalizzato
+        
+        L'AI analizza oltre 800 esercizi per creare 
+        il programma perfetto per te!
+        """)
 
 # --- LOGICA AI ---
 if generate_btn:
@@ -535,28 +789,46 @@ if generate_btn:
                             result_text = candidate.content.parts[0].text
                 
                 if result_text:
-                    st.success("Scheda generata con successo! Copiala su Hevy.")
+                    st.success("✅ Scheda generata con successo!")
+                    
+                    # Card risultato
+                    st.markdown('<div class="result-card">', unsafe_allow_html=True)
                     st.markdown(result_text)
+                    st.markdown('</div>', unsafe_allow_html=True)
+                    
                     # salva per esportazione
                     st.session_state["plan_md"] = result_text
                 else:
-                    st.error("La risposta dell'AI è vuota. Riprova.")
+                    st.error("❌ La risposta dell'AI è vuota. Riprova.")
                     st.write("Debug response:", response)
                 
             except Exception as e:
-                st.error(f"Errore durante la generazione: {e}")
-
-# --- VISUALIZZAZIONE DATABASE (Opzionale) ---
-with st.expander("Vedi Database Esercizi Caricato"):
-    st.dataframe(df_exercises)
+                st.error(f"❌ Errore durante la generazione: {e}")
 
 # --- ESPORTAZIONE PDF ---
 if st.session_state.get("plan_md"):
-    pdf_bytes = build_pdf_from_markdown(st.session_state["plan_md"])
-    if pdf_bytes:
-        st.download_button(
-            "Scarica scheda in PDF",
-            data=pdf_bytes,
-            file_name="scheda_allenamento.pdf",
-            mime="application/pdf"
-        )
+    st.markdown("---")
+    col_pdf1, col_pdf2, col_pdf3 = st.columns([1, 2, 1])
+    with col_pdf2:
+        pdf_bytes = build_pdf_from_markdown(st.session_state["plan_md"])
+        if pdf_bytes:
+            st.download_button(
+                "📥 Scarica Scheda PDF",
+                data=pdf_bytes,
+                file_name="scheda_allenamento.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+
+# --- VISUALIZZAZIONE DATABASE (Opzionale) ---
+with st.expander("📚 Vedi Database Esercizi"):
+    st.dataframe(df_exercises, use_container_width=True)
+
+# --- FOOTER ---
+st.markdown("---")
+st.markdown("""
+<div class="footer">
+    <p>🏋️ <strong>Hevy AI Architect</strong> • Powered by Google Gemini AI</p>
+    <p>Creato con ❤️ per gli appassionati di fitness</p>
+</div>
+""", unsafe_allow_html=True)
