@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import google.genai as genai
 import os
@@ -804,8 +805,37 @@ with st.sidebar:
     
     generate_btn = st.button("🚀 Genera Scheda AI", type="primary", use_container_width=True)
 
+# Funzione per chiudere la sidebar via JavaScript
+def collapse_sidebar():
+    """Inietta JavaScript per chiudere la sidebar."""
+    js = """
+    <script>
+        // Cerca il pulsante di chiusura sidebar e cliccalo
+        var sidebar = window.parent.document.querySelector('[data-testid="stSidebar"]');
+        if (sidebar) {
+            sidebar.setAttribute('aria-expanded', 'false');
+        }
+        
+        // Metodo alternativo: trova e clicca il pulsante collapse
+        var collapseBtn = window.parent.document.querySelector('[data-testid="stSidebarCollapseButton"]');
+        if (collapseBtn) {
+            collapseBtn.click();
+        }
+        
+        // Forza la chiusura aggiungendo classe CSS
+        var sidebarContent = window.parent.document.querySelector('[data-testid="stSidebarContent"]');
+        if (sidebarContent) {
+            sidebarContent.closest('section').style.transform = 'translateX(-100%)';
+        }
+    </script>
+    """
+    components.html(js, height=0)
+
 # --- LOGICA AI ---
 if generate_btn:
+    # Chiudi la sidebar per dare spazio ai risultati
+    collapse_sidebar()
+    
     # Salva le preferenze correnti
     current_prefs = {
         "goals": goals if goals != ["Equilibrato"] else ["Ipertrofia (Massa)"],
