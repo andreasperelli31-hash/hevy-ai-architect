@@ -69,21 +69,14 @@ st.markdown("""
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     
-    /* Variabili colori */
-    :root {
-        --primary-color: #FF4B4B;
-        --secondary-color: #1E1E1E;
-        --accent-color: #FF6B6B;
-        --success-color: #00C853;
-        --bg-dark: #0E1117;
-        --bg-card: #1E1E2E;
-        --text-primary: #FAFAFA;
-        --text-secondary: #B0B0B0;
-    }
-    
     /* Font globale */
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    /* Background principale */
+    .stApp {
+        background: #1a1a2e;
     }
     
     /* Header principale */
@@ -92,7 +85,7 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         font-weight: 700;
         text-align: center;
         margin-bottom: 0.5rem;
@@ -100,37 +93,101 @@ st.markdown("""
     
     .sub-header {
         text-align: center;
-        color: var(--text-secondary);
+        color: #E0E0E0;
         font-size: 1.1rem;
         margin-bottom: 2rem;
     }
     
-    /* Card container */
-    .stApp {
-        background: linear-gradient(180deg, #0E1117 0%, #1A1A2E 100%);
+    /* ===== SIDEBAR ===== */
+    [data-testid="stSidebar"] {
+        background: #16213e !important;
     }
     
-    /* Sidebar styling */
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1E1E2E 0%, #16162a 100%);
-        border-right: 1px solid rgba(255,255,255,0.1);
+    [data-testid="stSidebar"] > div:first-child {
+        background: #16213e !important;
+    }
+    
+    /* Titoli sidebar */
+    [data-testid="stSidebar"] h3 {
+        color: #FFFFFF !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
     }
     
     [data-testid="stSidebar"] .stMarkdown h2 {
-        color: #FF6B6B;
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-top: 1.5rem;
-        margin-bottom: 0.5rem;
+        color: #FF6B6B !important;
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.8rem !important;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid rgba(255,107,107,0.3);
+        border-bottom: 2px solid rgba(255,107,107,0.4);
     }
     
-    /* Bottoni */
+    /* LABEL dei campi - ALTA VISIBILITÀ */
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] .stSelectbox label,
+    [data-testid="stSidebar"] .stMultiSelect label,
+    [data-testid="stSidebar"] .stSlider label {
+        color: #FFFFFF !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* Testo generale sidebar */
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span {
+        color: #E8E8E8 !important;
+    }
+    
+    /* Selectbox styling */
+    [data-testid="stSidebar"] .stSelectbox > div > div {
+        background-color: #1f2b47 !important;
+        border: 1px solid #3d5a80 !important;
+        color: #FFFFFF !important;
+    }
+    
+    /* Multiselect styling */
+    [data-testid="stSidebar"] .stMultiSelect > div > div {
+        background-color: #1f2b47 !important;
+        border: 1px solid #3d5a80 !important;
+    }
+    
+    [data-testid="stSidebar"] .stMultiSelect span {
+        color: #FFFFFF !important;
+    }
+    
+    /* Slider value */
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
+    [data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {
+        color: #FFFFFF !important;
+    }
+    
+    /* ===== METRICHE ===== */
+    [data-testid="stMetric"] {
+        background: linear-gradient(145deg, #1f2b47 0%, #16213e 100%);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 107, 107, 0.2);
+    }
+    
+    [data-testid="stMetric"] label {
+        color: #FF8E8E !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+    }
+    
+    [data-testid="stMetric"] [data-testid="stMetricValue"] {
+        color: #FFFFFF !important;
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+    }
+    
+    /* ===== BOTTONI ===== */
     .stButton > button {
         width: 100%;
         background: linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 100%);
-        color: white;
+        color: white !important;
         border: none;
         border-radius: 12px;
         padding: 0.8rem 1.5rem;
@@ -142,44 +199,32 @@ st.markdown("""
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255,75,75,0.4);
+        box-shadow: 0 6px 20px rgba(255,75,75,0.5);
+        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
     }
     
     /* Download button */
     .stDownloadButton > button {
         background: linear-gradient(135deg, #00C853 0%, #00E676 100%);
+        color: white !important;
+        font-weight: 600;
         box-shadow: 0 4px 15px rgba(0,200,83,0.3);
     }
     
     .stDownloadButton > button:hover {
-        box-shadow: 0 6px 20px rgba(0,200,83,0.4);
+        box-shadow: 0 6px 20px rgba(0,200,83,0.5);
     }
     
-    /* Selectbox e multiselect */
-    .stSelectbox, .stMultiSelect {
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Slider */
-    .stSlider > div > div {
-        background-color: rgba(255,107,107,0.2);
-    }
-    
+    /* ===== SLIDER ===== */
     .stSlider > div > div > div {
-        background-color: #FF6B6B;
+        background-color: #FF6B6B !important;
     }
     
-    /* Cards per risultati */
-    .result-card {
-        background: linear-gradient(145deg, #1E1E2E 0%, #252540 100%);
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border: 1px solid rgba(255,255,255,0.05);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    .stSlider [data-baseweb="slider"] {
+        background-color: rgba(255,107,107,0.3) !important;
     }
     
-    /* Tabelle */
+    /* ===== TABELLE ===== */
     .stMarkdown table {
         width: 100%;
         border-collapse: separate;
@@ -187,11 +232,12 @@ st.markdown("""
         border-radius: 12px;
         overflow: hidden;
         margin: 1rem 0;
+        background: #1f2b47;
     }
     
     .stMarkdown th {
         background: linear-gradient(135deg, #FF4B4B 0%, #FF6B6B 100%);
-        color: white;
+        color: white !important;
         padding: 12px 8px;
         font-weight: 600;
         font-size: 0.85rem;
@@ -199,20 +245,56 @@ st.markdown("""
     
     .stMarkdown td {
         padding: 10px 8px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
         font-size: 0.9rem;
+        color: #E8E8E8 !important;
     }
     
     .stMarkdown tr:hover td {
-        background: rgba(255,107,107,0.1);
+        background: rgba(255,107,107,0.15);
     }
     
-    /* Spinner */
-    .stSpinner > div {
-        border-top-color: #FF6B6B !important;
+    /* ===== DATAFRAME ===== */
+    [data-testid="stDataFrame"] {
+        background: #1f2b47;
+        border-radius: 12px;
+        padding: 0.5rem;
     }
     
-    /* Mobile responsive */
+    /* ===== EXPANDER ===== */
+    .streamlit-expanderHeader {
+        background: #1f2b47 !important;
+        border-radius: 8px;
+        color: #FFFFFF !important;
+        font-weight: 500;
+    }
+    
+    .streamlit-expanderContent {
+        background: #16213e;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    /* ===== SUCCESS/ERROR MESSAGES ===== */
+    .stSuccess {
+        background-color: rgba(0, 200, 83, 0.15) !important;
+        color: #00E676 !important;
+    }
+    
+    .stError {
+        background-color: rgba(255, 75, 75, 0.15) !important;
+    }
+    
+    /* ===== RISULTATI ===== */
+    .result-card {
+        background: linear-gradient(145deg, #1f2b47 0%, #16213e 100%);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(255,107,107,0.2);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    
+    /* ===== MOBILE ===== */
     @media (max-width: 768px) {
         .main-header {
             font-size: 1.8rem;
@@ -224,7 +306,6 @@ st.markdown("""
         
         [data-testid="stSidebar"] {
             width: 100% !important;
-            min-width: 100% !important;
         }
         
         .stButton > button {
@@ -237,39 +318,36 @@ st.markdown("""
             font-size: 0.75rem;
         }
         
-        /* Stack tables on mobile */
-        .stMarkdown table {
-            font-size: 0.8rem;
+        [data-testid="stMetric"] {
+            padding: 0.8rem;
+        }
+        
+        [data-testid="stMetric"] [data-testid="stMetricValue"] {
+            font-size: 1.5rem !important;
         }
     }
     
-    /* Info box styling */
-    .info-box {
-        background: rgba(255,107,107,0.1);
-        border-left: 4px solid #FF6B6B;
-        padding: 1rem;
-        border-radius: 0 8px 8px 0;
-        margin: 1rem 0;
-    }
-    
-    /* Footer */
+    /* ===== FOOTER ===== */
     .footer {
         text-align: center;
         padding: 2rem;
-        color: var(--text-secondary);
+        color: #B0B0B0;
         font-size: 0.85rem;
         margin-top: 3rem;
         border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .footer strong {
+        color: #FF6B6B;
     }
     
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     
-    /* Expander styling */
-    .streamlit-expanderHeader {
-        background: rgba(255,107,107,0.1);
-        border-radius: 8px;
+    /* Divider */
+    hr {
+        border-color: rgba(255,107,107,0.3) !important;
     }
 </style>
 """, unsafe_allow_html=True)
