@@ -727,6 +727,18 @@ def translate_muscle(muscle):
 with st.sidebar:
     # Logo/Brand
     st.markdown("### 🏋️ Configura il tuo Allenamento")
+    
+    # Info box in alto
+    with st.expander("ℹ️ Come funziona", expanded=False):
+        st.markdown("""
+        1. **Configura** i tuoi obiettivi e preferenze
+        2. **Genera** la scheda con l'AI
+        3. **Scarica** il PDF personalizzato
+        
+        L'AI analizza oltre 800 esercizi per creare 
+        il programma perfetto per te!
+        """)
+    
     st.markdown("---")
     
     st.markdown("## 🎯 Obiettivi")
@@ -791,17 +803,6 @@ with st.sidebar:
     st.markdown("---")
     
     generate_btn = st.button("🚀 Genera Scheda AI", type="primary", use_container_width=True)
-    
-    # Info box
-    with st.expander("ℹ️ Come funziona"):
-        st.markdown("""
-        1. **Configura** i tuoi obiettivi e preferenze
-        2. **Genera** la scheda con l'AI
-        3. **Scarica** il PDF personalizzato
-        
-        L'AI analizza oltre 800 esercizi per creare 
-        il programma perfetto per te!
-        """)
 
 # --- LOGICA AI ---
 if generate_btn:
