@@ -1,24 +1,874 @@
 id,name,muscle_group,equipment,type
-1,Barbell Squat,Legs,Barbell,Compound
-2,Leg Press,Legs,Machine,Compound
-3,Walking Lunge,Legs,Dumbbell,Compound
-4,Leg Extension,Legs,Machine,Isolation
-5,Leg Curl,Legs,Machine,Isolation
-6,Calf Raise,Legs,Barbell,Isolation
-7,Bench Press,Chest,Barbell,Compound
-8,Dumbbell Bench Press,Chest,Dumbbell,Compound
-9,Incline Bench Press,Chest,Barbell,Compound
-10,Chest Fly,Chest,Machine,Isolation
-11,Barbell Rows,Back,Barbell,Compound
-12,Dumbbell Rows,Back,Dumbbell,Compound
-13,Lat Pulldown,Back,Machine,Isolation
-14,Pull-ups,Back,Bodyweight,Compound
-15,Deadlift,Back,Barbell,Compound
-16,Barbell Curl,Biceps,Barbell,Isolation
-17,Dumbbell Curl,Biceps,Dumbbell,Isolation
-18,Tricep Rope Push,Triceps,Cable,Isolation
-19,Close Grip Bench,Triceps,Barbell,Compound
-20,Overhead Press,Shoulders,Barbell,Compound
-21,Lateral Raise,Shoulders,Dumbbell,Isolation
-22,Face Pulls,Shoulders,Cable,Isolation
-23,Shrugs,Shoulders,Barbell,Isolation
+3_4_Sit-Up,3/4 Sit-Up,Abdominals,Bodyweight,Compound
+90_90_Hamstring,90/90 Hamstring,Hamstrings,Bodyweight,Compound
+Ab_Crunch_Machine,Ab Crunch Machine,Abdominals,Machine,Isolation
+Ab_Roller,Ab Roller,Abdominals,Other,Compound
+Adductor,Adductor,Adductors,Foam Roll,Isolation
+Adductor_Groin,Adductor/Groin,Adductors,Bodyweight,Compound
+Advanced_Kettlebell_Windmill,Advanced Kettlebell Windmill,Abdominals,Kettlebells,Isolation
+Air_Bike,Air Bike,Abdominals,Bodyweight,Compound
+All_Fours_Quad_Stretch,All Fours Quad Stretch,Quadriceps,Bodyweight,Compound
+Alternate_Hammer_Curl,Alternate Hammer Curl,Biceps,Dumbbell,Isolation
+Alternate_Heel_Touchers,Alternate Heel Touchers,Abdominals,Bodyweight,Isolation
+Alternate_Incline_Dumbbell_Curl,Alternate Incline Dumbbell Curl,Biceps,Dumbbell,Isolation
+Alternate_Leg_Diagonal_Bound,Alternate Leg Diagonal Bound,Quadriceps,Bodyweight,Compound
+Alternating_Cable_Shoulder_Press,Alternating Cable Shoulder Press,Shoulders,Cable,Compound
+Alternating_Deltoid_Raise,Alternating Deltoid Raise,Shoulders,Dumbbell,Isolation
+Alternating_Floor_Press,Alternating Floor Press,Chest,Kettlebells,Compound
+Alternating_Hang_Clean,Alternating Hang Clean,Hamstrings,Kettlebells,Compound
+Alternating_Kettlebell_Press,Alternating Kettlebell Press,Shoulders,Kettlebells,Compound
+Alternating_Kettlebell_Row,Alternating Kettlebell Row,Middle Back,Kettlebells,Isolation
+Alternating_Renegade_Row,Alternating Renegade Row,Middle Back,Kettlebells,Compound
+Ankle_Circles,Ankle Circles,Calves,Bodyweight,Isolation
+Ankle_On_The_Knee,Ankle On The Knee,Glutes,Bodyweight,Compound
+Anterior_Tibialis-SMR,Anterior Tibialis-Smr,Calves,Other,Compound
+Anti-Gravity_Press,Anti-Gravity Press,Shoulders,Barbell,Compound
+Arm_Circles,Arm Circles,Shoulders,Bodyweight,Isolation
+Arnold_Dumbbell_Press,Arnold Dumbbell Press,Shoulders,Dumbbell,Compound
+Around_The_Worlds,Around The Worlds,Chest,Dumbbell,Compound
+Atlas_Stone_Trainer,Atlas Stone Trainer,Lower Back,Other,Compound
+Atlas_Stones,Atlas Stones,Lower Back,Other,Compound
+Axle_Deadlift,Axle Deadlift,Lower Back,Other,Compound
+Back_Flyes_-_With_Bands,Back Flyes - With Bands,Shoulders,Bands,Compound
+Backward_Drag,Backward Drag,Quadriceps,Other,Compound
+Backward_Medicine_Ball_Throw,Backward Medicine Ball Throw,Shoulders,Medicine Ball,Compound
+Balance_Board,Balance Board,Calves,Other,Compound
+Ball_Leg_Curl,Ball Leg Curl,Hamstrings,Exercise Ball,Isolation
+Band_Assisted_Pull-Up,Band Assisted Pull-Up,Lats,Other,Compound
+Band_Good_Morning,Band Good Morning,Hamstrings,Bands,Compound
+Band_Good_Morning_Pull_Through,Band Good Morning (Pull Through),Hamstrings,Bands,Compound
+Band_Hip_Adductions,Band Hip Adductions,Adductors,Bands,Isolation
+Band_Pull_Apart,Band Pull Apart,Shoulders,Bands,Isolation
+Band_Skull_Crusher,Band Skull Crusher,Triceps,Bands,Isolation
+Barbell_Ab_Rollout,Barbell Ab Rollout,Abdominals,Barbell,Compound
+Barbell_Ab_Rollout_-_On_Knees,Barbell Ab Rollout - On Knees,Abdominals,Barbell,Compound
+Barbell_Bench_Press_-_Medium_Grip,Barbell Bench Press - Medium Grip,Chest,Barbell,Compound
+Barbell_Curl,Barbell Curl,Biceps,Barbell,Isolation
+Barbell_Curls_Lying_Against_An_Incline,Barbell Curls Lying Against An Incline,Biceps,Barbell,Isolation
+Barbell_Deadlift,Barbell Deadlift,Lower Back,Barbell,Compound
+Barbell_Full_Squat,Barbell Full Squat,Quadriceps,Barbell,Compound
+Barbell_Glute_Bridge,Barbell Glute Bridge,Glutes,Barbell,Compound
+Barbell_Guillotine_Bench_Press,Barbell Guillotine Bench Press,Chest,Barbell,Compound
+Barbell_Hack_Squat,Barbell Hack Squat,Quadriceps,Barbell,Compound
+Barbell_Hip_Thrust,Barbell Hip Thrust,Glutes,Barbell,Compound
+Barbell_Incline_Bench_Press_-_Medium_Grip,Barbell Incline Bench Press - Medium Grip,Chest,Barbell,Compound
+Barbell_Incline_Shoulder_Raise,Barbell Incline Shoulder Raise,Shoulders,Barbell,Compound
+Barbell_Lunge,Barbell Lunge,Quadriceps,Barbell,Compound
+Barbell_Rear_Delt_Row,Barbell Rear Delt Row,Shoulders,Barbell,Compound
+Barbell_Rollout_from_Bench,Barbell Rollout From Bench,Abdominals,Barbell,Compound
+Barbell_Seated_Calf_Raise,Barbell Seated Calf Raise,Calves,Barbell,Isolation
+Barbell_Shoulder_Press,Barbell Shoulder Press,Shoulders,Barbell,Compound
+Barbell_Shrug,Barbell Shrug,Traps,Barbell,Isolation
+Barbell_Shrug_Behind_The_Back,Barbell Shrug Behind The Back,Traps,Barbell,Isolation
+Barbell_Side_Bend,Barbell Side Bend,Abdominals,Barbell,Isolation
+Barbell_Side_Split_Squat,Barbell Side Split Squat,Quadriceps,Barbell,Compound
+Barbell_Squat,Barbell Squat,Quadriceps,Barbell,Compound
+Barbell_Squat_To_A_Bench,Barbell Squat To A Bench,Quadriceps,Barbell,Compound
+Barbell_Step_Ups,Barbell Step Ups,Quadriceps,Barbell,Compound
+Barbell_Walking_Lunge,Barbell Walking Lunge,Quadriceps,Barbell,Compound
+Battling_Ropes,Battling Ropes,Shoulders,Other,Compound
+Bear_Crawl_Sled_Drags,Bear Crawl Sled Drags,Quadriceps,Other,Compound
+Behind_Head_Chest_Stretch,Behind Head Chest Stretch,Chest,Other,Isolation
+Bench_Dips,Bench Dips,Triceps,Bodyweight,Compound
+Bench_Jump,Bench Jump,Quadriceps,Bodyweight,Compound
+Bench_Press_-_Powerlifting,Bench Press - Powerlifting,Triceps,Barbell,Compound
+Bench_Press_-_With_Bands,Bench Press - With Bands,Chest,Bands,Compound
+Bench_Press_with_Chains,Bench Press With Chains,Triceps,Barbell,Compound
+Bench_Sprint,Bench Sprint,Quadriceps,Other,Compound
+Bent-Arm_Barbell_Pullover,Bent-Arm Barbell Pullover,Lats,Barbell,Compound
+Bent-Arm_Dumbbell_Pullover,Bent-Arm Dumbbell Pullover,Chest,Dumbbell,Compound
+Bent-Knee_Hip_Raise,Bent-Knee Hip Raise,Abdominals,Bodyweight,Compound
+Bent_Over_Barbell_Row,Bent Over Barbell Row,Middle Back,Barbell,Compound
+Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench,Bent Over Dumbbell Rear Delt Raise With Head On Bench,Shoulders,Dumbbell,Isolation
+Bent_Over_Low-Pulley_Side_Lateral,Bent Over Low-Pulley Side Lateral,Shoulders,Cable,Isolation
+Bent_Over_One-Arm_Long_Bar_Row,Bent Over One-Arm Long Bar Row,Middle Back,Barbell,Compound
+Bent_Over_Two-Arm_Long_Bar_Row,Bent Over Two-Arm Long Bar Row,Middle Back,Barbell,Compound
+Bent_Over_Two-Dumbbell_Row,Bent Over Two-Dumbbell Row,Middle Back,Dumbbell,Compound
+Bent_Over_Two-Dumbbell_Row_With_Palms_In,Bent Over Two-Dumbbell Row With Palms In,Middle Back,Dumbbell,Compound
+Bent_Press,Bent Press,Abdominals,Kettlebells,Compound
+Bicycling,Bicycling,Quadriceps,Other,Compound
+Bicycling_Stationary,"Bicycling, Stationary",Quadriceps,Machine,Compound
+Board_Press,Board Press,Triceps,Barbell,Compound
+Body-Up,Body-Up,Triceps,Bodyweight,Isolation
+Body_Tricep_Press,Body Tricep Press,Triceps,Bodyweight,Isolation
+Bodyweight_Flyes,Bodyweight Flyes,Chest,E-Z Curl Bar,Isolation
+Bodyweight_Mid_Row,Bodyweight Mid Row,Middle Back,Other,Compound
+Bodyweight_Squat,Bodyweight Squat,Quadriceps,Bodyweight,Compound
+Bodyweight_Walking_Lunge,Bodyweight Walking Lunge,Quadriceps,Bodyweight,Compound
+Bosu_Ball_Cable_Crunch_With_Side_Bends,Bosu Ball Cable Crunch With Side Bends,Abdominals,Cable,Isolation
+Bottoms-Up_Clean_From_The_Hang_Position,Bottoms-Up Clean From The Hang Position,Forearms,Kettlebells,Compound
+Bottoms_Up,Bottoms Up,Abdominals,Bodyweight,Compound
+Box_Jump_Multiple_Response,Box Jump (Multiple Response),Hamstrings,Other,Compound
+Box_Skip,Box Skip,Hamstrings,Other,Compound
+Box_Squat,Box Squat,Quadriceps,Barbell,Compound
+Box_Squat_with_Bands,Box Squat With Bands,Quadriceps,Barbell,Compound
+Box_Squat_with_Chains,Box Squat With Chains,Quadriceps,Barbell,Compound
+Brachialis-SMR,Brachialis-Smr,Biceps,Foam Roll,Compound
+Bradford_Rocky_Presses,Bradford/Rocky Presses,Shoulders,Barbell,Compound
+Butt-Ups,Butt-Ups,Abdominals,Bodyweight,Compound
+Butt_Lift_Bridge,Butt Lift (Bridge),Glutes,Bodyweight,Isolation
+Butterfly,Butterfly,Chest,Machine,Isolation
+Cable_Chest_Press,Cable Chest Press,Chest,Cable,Compound
+Cable_Crossover,Cable Crossover,Chest,Cable,Isolation
+Cable_Crunch,Cable Crunch,Abdominals,Cable,Isolation
+Cable_Deadlifts,Cable Deadlifts,Quadriceps,Cable,Compound
+Cable_Hammer_Curls_-_Rope_Attachment,Cable Hammer Curls - Rope Attachment,Biceps,Cable,Isolation
+Cable_Hip_Adduction,Cable Hip Adduction,Quadriceps,Cable,Isolation
+Cable_Incline_Pushdown,Cable Incline Pushdown,Lats,Cable,Isolation
+Cable_Incline_Triceps_Extension,Cable Incline Triceps Extension,Triceps,Cable,Isolation
+Cable_Internal_Rotation,Cable Internal Rotation,Shoulders,Cable,Compound
+Cable_Iron_Cross,Cable Iron Cross,Chest,Cable,Isolation
+Cable_Judo_Flip,Cable Judo Flip,Abdominals,Cable,Compound
+Cable_Lying_Triceps_Extension,Cable Lying Triceps Extension,Triceps,Cable,Isolation
+Cable_One_Arm_Tricep_Extension,Cable One Arm Tricep Extension,Triceps,Cable,Isolation
+Cable_Preacher_Curl,Cable Preacher Curl,Biceps,Cable,Isolation
+Cable_Rear_Delt_Fly,Cable Rear Delt Fly,Shoulders,Cable,Isolation
+Cable_Reverse_Crunch,Cable Reverse Crunch,Abdominals,Cable,Isolation
+Cable_Rope_Overhead_Triceps_Extension,Cable Rope Overhead Triceps Extension,Triceps,Cable,Isolation
+Cable_Rope_Rear-Delt_Rows,Cable Rope Rear-Delt Rows,Shoulders,Cable,Compound
+Cable_Russian_Twists,Cable Russian Twists,Abdominals,Cable,Compound
+Cable_Seated_Crunch,Cable Seated Crunch,Abdominals,Cable,Isolation
+Cable_Seated_Lateral_Raise,Cable Seated Lateral Raise,Shoulders,Cable,Isolation
+Cable_Shoulder_Press,Cable Shoulder Press,Shoulders,Cable,Compound
+Cable_Shrugs,Cable Shrugs,Traps,Cable,Isolation
+Cable_Wrist_Curl,Cable Wrist Curl,Forearms,Cable,Isolation
+Calf-Machine_Shoulder_Shrug,Calf-Machine Shoulder Shrug,Traps,Machine,Isolation
+Calf_Press,Calf Press,Calves,Machine,Isolation
+Calf_Press_On_The_Leg_Press_Machine,Calf Press On The Leg Press Machine,Calves,Machine,Isolation
+Calf_Raise_On_A_Dumbbell,Calf Raise On A Dumbbell,Calves,Dumbbell,Isolation
+Calf_Raises_-_With_Bands,Calf Raises - With Bands,Calves,Bands,Isolation
+Calf_Stretch_Elbows_Against_Wall,Calf Stretch Elbows Against Wall,Calves,Bodyweight,Isolation
+Calf_Stretch_Hands_Against_Wall,Calf Stretch Hands Against Wall,Calves,Bodyweight,Isolation
+Calves-SMR,Calves-Smr,Calves,Foam Roll,Compound
+Car_Deadlift,Car Deadlift,Quadriceps,Other,Compound
+Car_Drivers,Car Drivers,Shoulders,Barbell,Isolation
+Carioca_Quick_Step,Carioca Quick Step,Adductors,Bodyweight,Compound
+Cat_Stretch,Cat Stretch,Lower Back,Bodyweight,Compound
+Catch_and_Overhead_Throw,Catch And Overhead Throw,Lats,Medicine Ball,Compound
+Chain_Handle_Extension,Chain Handle Extension,Triceps,Other,Isolation
+Chain_Press,Chain Press,Chest,Other,Compound
+Chair_Leg_Extended_Stretch,Chair Leg Extended Stretch,Hamstrings,Other,Isolation
+Chair_Lower_Back_Stretch,Chair Lower Back Stretch,Lats,Bodyweight,Isolation
+Chair_Squat,Chair Squat,Quadriceps,Machine,Compound
+Chair_Upper_Body_Stretch,Chair Upper Body Stretch,Shoulders,Other,Compound
+Chest_And_Front_Of_Shoulder_Stretch,Chest And Front Of Shoulder Stretch,Chest,Other,Isolation
+Chest_Push_from_3_point_stance,Chest Push From 3 Point Stance,Chest,Medicine Ball,Compound
+Chest_Push_multiple_response,Chest Push (Multiple Response),Chest,Medicine Ball,Compound
+Chest_Push_single_response,Chest Push (Single Response),Chest,Medicine Ball,Compound
+Chest_Push_with_Run_Release,Chest Push With Run Release,Chest,Medicine Ball,Compound
+Chest_Stretch_on_Stability_Ball,Chest Stretch On Stability Ball,Chest,Exercise Ball,Isolation
+Childs_Pose,Child'S Pose,Lower Back,Bodyweight,Compound
+Chin-Up,Chin-Up,Lats,Bodyweight,Compound
+Chin_To_Chest_Stretch,Chin To Chest Stretch,Neck,Bodyweight,Compound
+Circus_Bell,Circus Bell,Shoulders,Other,Compound
+Clean,Clean,Hamstrings,Barbell,Compound
+Clean_Deadlift,Clean Deadlift,Hamstrings,Barbell,Compound
+Clean_Pull,Clean Pull,Quadriceps,Barbell,Compound
+Clean_Shrug,Clean Shrug,Traps,Barbell,Compound
+Clean_and_Jerk,Clean And Jerk,Shoulders,Barbell,Compound
+Clean_and_Press,Clean And Press,Shoulders,Barbell,Compound
+Clean_from_Blocks,Clean From Blocks,Quadriceps,Barbell,Compound
+Clock_Push-Up,Clock Push-Up,Chest,Bodyweight,Compound
+Close-Grip_Barbell_Bench_Press,Close-Grip Barbell Bench Press,Triceps,Barbell,Compound
+Close-Grip_Dumbbell_Press,Close-Grip Dumbbell Press,Triceps,Dumbbell,Compound
+Close-Grip_EZ-Bar_Curl_with_Band,Close-Grip Ez-Bar Curl With Band,Biceps,E-Z Curl Bar,Isolation
+Close-Grip_EZ-Bar_Press,Close-Grip Ez-Bar Press,Triceps,E-Z Curl Bar,Compound
+Close-Grip_EZ_Bar_Curl,Close-Grip Ez Bar Curl,Biceps,Barbell,Isolation
+Close-Grip_Front_Lat_Pulldown,Close-Grip Front Lat Pulldown,Lats,Cable,Compound
+Close-Grip_Push-Up_off_of_a_Dumbbell,Close-Grip Push-Up Off Of A Dumbbell,Triceps,Bodyweight,Compound
+Close-Grip_Standing_Barbell_Curl,Close-Grip Standing Barbell Curl,Biceps,Barbell,Isolation
+Cocoons,Cocoons,Abdominals,Bodyweight,Compound
+Conans_Wheel,Conan'S Wheel,Quadriceps,Other,Compound
+Concentration_Curls,Concentration Curls,Biceps,Dumbbell,Isolation
+Cross-Body_Crunch,Cross-Body Crunch,Abdominals,Bodyweight,Compound
+Cross_Body_Hammer_Curl,Cross Body Hammer Curl,Biceps,Dumbbell,Isolation
+Cross_Over_-_With_Bands,Cross Over - With Bands,Chest,Bands,Compound
+Crossover_Reverse_Lunge,Crossover Reverse Lunge,Lower Back,Bodyweight,Compound
+Crucifix,Crucifix,Shoulders,Other,Isolation
+Crunch_-_Hands_Overhead,Crunch - Hands Overhead,Abdominals,Bodyweight,Isolation
+Crunch_-_Legs_On_Exercise_Ball,Crunch - Legs On Exercise Ball,Abdominals,Bodyweight,Isolation
+Crunches,Crunches,Abdominals,Bodyweight,Isolation
+Cuban_Press,Cuban Press,Shoulders,Dumbbell,Compound
+Dancers_Stretch,Dancer'S Stretch,Lower Back,Bodyweight,Compound
+Dead_Bug,Dead Bug,Abdominals,Bodyweight,Compound
+Deadlift_with_Bands,Deadlift With Bands,Lower Back,Barbell,Compound
+Deadlift_with_Chains,Deadlift With Chains,Lower Back,Barbell,Compound
+Decline_Barbell_Bench_Press,Decline Barbell Bench Press,Chest,Barbell,Compound
+Decline_Close-Grip_Bench_To_Skull_Crusher,Decline Close-Grip Bench To Skull Crusher,Triceps,Barbell,Compound
+Decline_Crunch,Decline Crunch,Abdominals,Bodyweight,Isolation
+Decline_Dumbbell_Bench_Press,Decline Dumbbell Bench Press,Chest,Dumbbell,Compound
+Decline_Dumbbell_Flyes,Decline Dumbbell Flyes,Chest,Dumbbell,Compound
+Decline_Dumbbell_Triceps_Extension,Decline Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Decline_EZ_Bar_Triceps_Extension,Decline Ez Bar Triceps Extension,Triceps,Barbell,Isolation
+Decline_Oblique_Crunch,Decline Oblique Crunch,Abdominals,Bodyweight,Compound
+Decline_Push-Up,Decline Push-Up,Chest,Bodyweight,Compound
+Decline_Reverse_Crunch,Decline Reverse Crunch,Abdominals,Bodyweight,Compound
+Decline_Smith_Press,Decline Smith Press,Chest,Machine,Compound
+Deficit_Deadlift,Deficit Deadlift,Lower Back,Barbell,Compound
+Depth_Jump_Leap,Depth Jump Leap,Quadriceps,Other,Compound
+Dip_Machine,Dip Machine,Triceps,Machine,Compound
+Dips_-_Chest_Version,Dips - Chest Version,Chest,Other,Compound
+Dips_-_Triceps_Version,Dips - Triceps Version,Triceps,Bodyweight,Compound
+Donkey_Calf_Raises,Donkey Calf Raises,Calves,Other,Isolation
+Double_Kettlebell_Alternating_Hang_Clean,Double Kettlebell Alternating Hang Clean,Hamstrings,Kettlebells,Compound
+Double_Kettlebell_Jerk,Double Kettlebell Jerk,Shoulders,Kettlebells,Compound
+Double_Kettlebell_Push_Press,Double Kettlebell Push Press,Shoulders,Kettlebells,Compound
+Double_Kettlebell_Snatch,Double Kettlebell Snatch,Shoulders,Kettlebells,Compound
+Double_Kettlebell_Windmill,Double Kettlebell Windmill,Abdominals,Kettlebells,Compound
+Double_Leg_Butt_Kick,Double Leg Butt Kick,Quadriceps,Bodyweight,Compound
+Downward_Facing_Balance,Downward Facing Balance,Glutes,Exercise Ball,Isolation
+Drag_Curl,Drag Curl,Biceps,Barbell,Compound
+Drop_Push,Drop Push,Chest,Other,Compound
+Dumbbell_Alternate_Bicep_Curl,Dumbbell Alternate Bicep Curl,Biceps,Dumbbell,Isolation
+Dumbbell_Bench_Press,Dumbbell Bench Press,Chest,Dumbbell,Compound
+Dumbbell_Bench_Press_with_Neutral_Grip,Dumbbell Bench Press With Neutral Grip,Chest,Dumbbell,Compound
+Dumbbell_Bicep_Curl,Dumbbell Bicep Curl,Biceps,Dumbbell,Isolation
+Dumbbell_Clean,Dumbbell Clean,Hamstrings,Dumbbell,Compound
+Dumbbell_Floor_Press,Dumbbell Floor Press,Triceps,Dumbbell,Compound
+Dumbbell_Flyes,Dumbbell Flyes,Chest,Dumbbell,Isolation
+Dumbbell_Incline_Row,Dumbbell Incline Row,Middle Back,Dumbbell,Compound
+Dumbbell_Incline_Shoulder_Raise,Dumbbell Incline Shoulder Raise,Shoulders,Dumbbell,Isolation
+Dumbbell_Lunges,Dumbbell Lunges,Quadriceps,Dumbbell,Compound
+Dumbbell_Lying_One-Arm_Rear_Lateral_Raise,Dumbbell Lying One-Arm Rear Lateral Raise,Shoulders,Dumbbell,Isolation
+Dumbbell_Lying_Pronation,Dumbbell Lying Pronation,Forearms,Dumbbell,Isolation
+Dumbbell_Lying_Rear_Lateral_Raise,Dumbbell Lying Rear Lateral Raise,Shoulders,Dumbbell,Isolation
+Dumbbell_Lying_Supination,Dumbbell Lying Supination,Forearms,Dumbbell,Isolation
+Dumbbell_One-Arm_Shoulder_Press,Dumbbell One-Arm Shoulder Press,Shoulders,Dumbbell,Compound
+Dumbbell_One-Arm_Triceps_Extension,Dumbbell One-Arm Triceps Extension,Triceps,Dumbbell,Isolation
+Dumbbell_One-Arm_Upright_Row,Dumbbell One-Arm Upright Row,Shoulders,Dumbbell,Compound
+Dumbbell_Prone_Incline_Curl,Dumbbell Prone Incline Curl,Biceps,Dumbbell,Isolation
+Dumbbell_Raise,Dumbbell Raise,Shoulders,Dumbbell,Compound
+Dumbbell_Rear_Lunge,Dumbbell Rear Lunge,Quadriceps,Dumbbell,Compound
+Dumbbell_Scaption,Dumbbell Scaption,Shoulders,Dumbbell,Isolation
+Dumbbell_Seated_Box_Jump,Dumbbell Seated Box Jump,Quadriceps,Dumbbell,Compound
+Dumbbell_Seated_One-Leg_Calf_Raise,Dumbbell Seated One-Leg Calf Raise,Calves,Dumbbell,Isolation
+Dumbbell_Shoulder_Press,Dumbbell Shoulder Press,Shoulders,Dumbbell,Compound
+Dumbbell_Shrug,Dumbbell Shrug,Traps,Dumbbell,Isolation
+Dumbbell_Side_Bend,Dumbbell Side Bend,Abdominals,Dumbbell,Isolation
+Dumbbell_Squat,Dumbbell Squat,Quadriceps,Dumbbell,Compound
+Dumbbell_Squat_To_A_Bench,Dumbbell Squat To A Bench,Quadriceps,Dumbbell,Compound
+Dumbbell_Step_Ups,Dumbbell Step Ups,Quadriceps,Dumbbell,Compound
+Dumbbell_Tricep_Extension_-Pronated_Grip,Dumbbell Tricep Extension -Pronated Grip,Triceps,Dumbbell,Isolation
+Dynamic_Back_Stretch,Dynamic Back Stretch,Lats,Bodyweight,Compound
+Dynamic_Chest_Stretch,Dynamic Chest Stretch,Chest,Bodyweight,Compound
+EZ-Bar_Curl,Ez-Bar Curl,Biceps,E-Z Curl Bar,Isolation
+EZ-Bar_Skullcrusher,Ez-Bar Skullcrusher,Triceps,E-Z Curl Bar,Isolation
+Elbow_Circles,Elbow Circles,Shoulders,Bodyweight,Isolation
+Elbow_to_Knee,Elbow To Knee,Abdominals,Bodyweight,Compound
+Elbows_Back,Elbows Back,Chest,Bodyweight,Isolation
+Elevated_Back_Lunge,Elevated Back Lunge,Quadriceps,Barbell,Compound
+Elevated_Cable_Rows,Elevated Cable Rows,Lats,Cable,Compound
+Elliptical_Trainer,Elliptical Trainer,Quadriceps,Machine,Compound
+Exercise_Ball_Crunch,Exercise Ball Crunch,Abdominals,Exercise Ball,Isolation
+Exercise_Ball_Pull-In,Exercise Ball Pull-In,Abdominals,Exercise Ball,Compound
+Extended_Range_One-Arm_Kettlebell_Floor_Press,Extended Range One-Arm Kettlebell Floor Press,Chest,Kettlebells,Compound
+External_Rotation,External Rotation,Shoulders,Dumbbell,Isolation
+External_Rotation_with_Band,External Rotation With Band,Shoulders,Bands,Compound
+External_Rotation_with_Cable,External Rotation With Cable,Shoulders,Cable,Isolation
+Face_Pull,Face Pull,Shoulders,Cable,Compound
+Farmers_Walk,Farmer'S Walk,Forearms,Other,Compound
+Fast_Skipping,Fast Skipping,Quadriceps,Bodyweight,Compound
+Finger_Curls,Finger Curls,Forearms,Barbell,Isolation
+Flat_Bench_Cable_Flyes,Flat Bench Cable Flyes,Chest,Cable,Isolation
+Flat_Bench_Leg_Pull-In,Flat Bench Leg Pull-In,Abdominals,Bodyweight,Compound
+Flat_Bench_Lying_Leg_Raise,Flat Bench Lying Leg Raise,Abdominals,Bodyweight,Isolation
+Flexor_Incline_Dumbbell_Curls,Flexor Incline Dumbbell Curls,Biceps,Dumbbell,Isolation
+Floor_Glute-Ham_Raise,Floor Glute-Ham Raise,Hamstrings,Bodyweight,Isolation
+Floor_Press,Floor Press,Triceps,Barbell,Compound
+Floor_Press_with_Chains,Floor Press With Chains,Triceps,Barbell,Compound
+Flutter_Kicks,Flutter Kicks,Glutes,Bodyweight,Compound
+Foot-SMR,Foot-Smr,Calves,Other,Compound
+Forward_Drag_with_Press,Forward Drag With Press,Chest,Other,Compound
+Frankenstein_Squat,Frankenstein Squat,Quadriceps,Barbell,Compound
+Freehand_Jump_Squat,Freehand Jump Squat,Quadriceps,Bodyweight,Compound
+Frog_Hops,Frog Hops,Quadriceps,Bodyweight,Compound
+Frog_Sit-Ups,Frog Sit-Ups,Abdominals,Bodyweight,Isolation
+Front_Barbell_Squat,Front Barbell Squat,Quadriceps,Barbell,Compound
+Front_Barbell_Squat_To_A_Bench,Front Barbell Squat To A Bench,Quadriceps,Barbell,Compound
+Front_Box_Jump,Front Box Jump,Hamstrings,Other,Compound
+Front_Cable_Raise,Front Cable Raise,Shoulders,Cable,Isolation
+Front_Cone_Hops_or_hurdle_hops,Front Cone Hops (Or Hurdle Hops),Quadriceps,Other,Compound
+Front_Dumbbell_Raise,Front Dumbbell Raise,Shoulders,Dumbbell,Isolation
+Front_Incline_Dumbbell_Raise,Front Incline Dumbbell Raise,Shoulders,Dumbbell,Isolation
+Front_Leg_Raises,Front Leg Raises,Hamstrings,Bodyweight,Compound
+Front_Plate_Raise,Front Plate Raise,Shoulders,Other,Isolation
+Front_Raise_And_Pullover,Front Raise And Pullover,Chest,Barbell,Compound
+Front_Squat_Clean_Grip,Front Squat (Clean Grip),Quadriceps,Barbell,Compound
+Front_Squats_With_Two_Kettlebells,Front Squats With Two Kettlebells,Quadriceps,Kettlebells,Compound
+Front_Two-Dumbbell_Raise,Front Two-Dumbbell Raise,Shoulders,Dumbbell,Isolation
+Full_Range-Of-Motion_Lat_Pulldown,Full Range-Of-Motion Lat Pulldown,Lats,Cable,Compound
+Gironda_Sternum_Chins,Gironda Sternum Chins,Lats,Other,Compound
+Glute_Ham_Raise,Glute Ham Raise,Hamstrings,Machine,Compound
+Glute_Kickback,Glute Kickback,Glutes,Bodyweight,Compound
+Goblet_Squat,Goblet Squat,Quadriceps,Kettlebells,Compound
+Good_Morning,Good Morning,Hamstrings,Barbell,Compound
+Good_Morning_off_Pins,Good Morning Off Pins,Hamstrings,Barbell,Compound
+Gorilla_Chin_Crunch,Gorilla Chin/Crunch,Abdominals,Bodyweight,Compound
+Groin_and_Back_Stretch,Groin And Back Stretch,Adductors,Bodyweight,Compound
+Groiners,Groiners,Adductors,Bodyweight,Compound
+Hack_Squat,Hack Squat,Quadriceps,Machine,Compound
+Hammer_Curls,Hammer Curls,Biceps,Dumbbell,Isolation
+Hammer_Grip_Incline_DB_Bench_Press,Hammer Grip Incline Db Bench Press,Chest,Dumbbell,Compound
+Hamstring-SMR,Hamstring-Smr,Hamstrings,Foam Roll,Isolation
+Hamstring_Stretch,Hamstring Stretch,Hamstrings,Bodyweight,Isolation
+Handstand_Push-Ups,Handstand Push-Ups,Shoulders,Bodyweight,Compound
+Hang_Clean,Hang Clean,Quadriceps,Barbell,Compound
+Hang_Clean_-_Below_the_Knees,Hang Clean - Below The Knees,Quadriceps,Barbell,Compound
+Hang_Snatch,Hang Snatch,Hamstrings,Barbell,Compound
+Hang_Snatch_-_Below_Knees,Hang Snatch - Below Knees,Hamstrings,Barbell,Compound
+Hanging_Bar_Good_Morning,Hanging Bar Good Morning,Hamstrings,Barbell,Compound
+Hanging_Leg_Raise,Hanging Leg Raise,Abdominals,Bodyweight,Isolation
+Hanging_Pike,Hanging Pike,Abdominals,Bodyweight,Compound
+Heaving_Snatch_Balance,Heaving Snatch Balance,Quadriceps,Barbell,Compound
+Heavy_Bag_Thrust,Heavy Bag Thrust,Chest,Other,Compound
+High_Cable_Curls,High Cable Curls,Biceps,Cable,Compound
+Hip_Circles_prone,Hip Circles (Prone),Abductors,Bodyweight,Isolation
+Hip_Extension_with_Bands,Hip Extension With Bands,Glutes,Bands,Compound
+Hip_Flexion_with_Band,Hip Flexion With Band,Quadriceps,Bands,Compound
+Hip_Lift_with_Band,Hip Lift With Band,Glutes,Bands,Compound
+Hug_A_Ball,Hug A Ball,Lower Back,Exercise Ball,Isolation
+Hug_Knees_To_Chest,Hug Knees To Chest,Lower Back,Bodyweight,Compound
+Hurdle_Hops,Hurdle Hops,Hamstrings,Other,Compound
+Hyperextensions_Back_Extensions,Hyperextensions (Back Extensions),Lower Back,Other,Isolation
+Hyperextensions_With_No_Hyperextension_Bench,Hyperextensions With No Hyperextension Bench,Lower Back,Bodyweight,Compound
+IT_Band_and_Glute_Stretch,It Band And Glute Stretch,Abductors,Other,Compound
+Iliotibial_Tract-SMR,Iliotibial Tract-Smr,Abductors,Foam Roll,Isolation
+Inchworm,Inchworm,Hamstrings,Bodyweight,Compound
+Incline_Barbell_Triceps_Extension,Incline Barbell Triceps Extension,Triceps,Barbell,Isolation
+Incline_Bench_Pull,Incline Bench Pull,Middle Back,Barbell,Isolation
+Incline_Cable_Chest_Press,Incline Cable Chest Press,Chest,Cable,Compound
+Incline_Cable_Flye,Incline Cable Flye,Chest,Cable,Isolation
+Incline_Dumbbell_Bench_With_Palms_Facing_In,Incline Dumbbell Bench With Palms Facing In,Chest,Dumbbell,Compound
+Incline_Dumbbell_Curl,Incline Dumbbell Curl,Biceps,Dumbbell,Isolation
+Incline_Dumbbell_Flyes,Incline Dumbbell Flyes,Chest,Dumbbell,Compound
+Incline_Dumbbell_Flyes_-_With_A_Twist,Incline Dumbbell Flyes - With A Twist,Chest,Dumbbell,Compound
+Incline_Dumbbell_Press,Incline Dumbbell Press,Chest,Dumbbell,Compound
+Incline_Hammer_Curls,Incline Hammer Curls,Biceps,Dumbbell,Isolation
+Incline_Inner_Biceps_Curl,Incline Inner Biceps Curl,Biceps,Dumbbell,Isolation
+Incline_Push-Up,Incline Push-Up,Chest,Bodyweight,Compound
+Incline_Push-Up_Close-Grip,Incline Push-Up Close-Grip,Triceps,Bodyweight,Compound
+Incline_Push-Up_Depth_Jump,Incline Push-Up Depth Jump,Chest,Other,Compound
+Incline_Push-Up_Medium,Incline Push-Up Medium,Chest,Bodyweight,Compound
+Incline_Push-Up_Reverse_Grip,Incline Push-Up Reverse Grip,Chest,Bodyweight,Compound
+Incline_Push-Up_Wide,Incline Push-Up Wide,Chest,Bodyweight,Compound
+Intermediate_Groin_Stretch,Intermediate Groin Stretch,Hamstrings,Other,Isolation
+Intermediate_Hip_Flexor_and_Quad_Stretch,Intermediate Hip Flexor And Quad Stretch,Quadriceps,Other,Compound
+Internal_Rotation_with_Band,Internal Rotation With Band,Shoulders,Bands,Isolation
+Inverted_Row,Inverted Row,Middle Back,Bodyweight,Compound
+Inverted_Row_with_Straps,Inverted Row With Straps,Middle Back,Other,Compound
+Iron_Cross,Iron Cross,Shoulders,Dumbbell,Compound
+Iron_Crosses_stretch,Iron Crosses (Stretch),Quadriceps,Bodyweight,Compound
+Isometric_Chest_Squeezes,Isometric Chest Squeezes,Chest,Bodyweight,Compound
+Isometric_Neck_Exercise_-_Front_And_Back,Isometric Neck Exercise - Front And Back,Neck,Bodyweight,Isolation
+Isometric_Neck_Exercise_-_Sides,Isometric Neck Exercise - Sides,Neck,Bodyweight,Isolation
+Isometric_Wipers,Isometric Wipers,Chest,Bodyweight,Compound
+JM_Press,Jm Press,Triceps,Barbell,Compound
+Jackknife_Sit-Up,Jackknife Sit-Up,Abdominals,Bodyweight,Compound
+Janda_Sit-Up,Janda Sit-Up,Abdominals,Bodyweight,Isolation
+Jefferson_Squats,Jefferson Squats,Quadriceps,Barbell,Compound
+Jerk_Balance,Jerk Balance,Shoulders,Barbell,Compound
+Jerk_Dip_Squat,Jerk Dip Squat,Quadriceps,Barbell,Compound
+Jogging_Treadmill,"Jogging, Treadmill",Quadriceps,Machine,Compound
+Keg_Load,Keg Load,Lower Back,Other,Compound
+Kettlebell_Arnold_Press,Kettlebell Arnold Press,Shoulders,Kettlebells,Compound
+Kettlebell_Dead_Clean,Kettlebell Dead Clean,Hamstrings,Kettlebells,Compound
+Kettlebell_Figure_8,Kettlebell Figure 8,Abdominals,Kettlebells,Compound
+Kettlebell_Hang_Clean,Kettlebell Hang Clean,Hamstrings,Kettlebells,Compound
+Kettlebell_One-Legged_Deadlift,Kettlebell One-Legged Deadlift,Hamstrings,Kettlebells,Compound
+Kettlebell_Pass_Between_The_Legs,Kettlebell Pass Between The Legs,Abdominals,Kettlebells,Compound
+Kettlebell_Pirate_Ships,Kettlebell Pirate Ships,Shoulders,Kettlebells,Compound
+Kettlebell_Pistol_Squat,Kettlebell Pistol Squat,Quadriceps,Kettlebells,Compound
+Kettlebell_Seated_Press,Kettlebell Seated Press,Shoulders,Kettlebells,Compound
+Kettlebell_Seesaw_Press,Kettlebell Seesaw Press,Shoulders,Kettlebells,Compound
+Kettlebell_Sumo_High_Pull,Kettlebell Sumo High Pull,Traps,Kettlebells,Compound
+Kettlebell_Thruster,Kettlebell Thruster,Shoulders,Kettlebells,Compound
+Kettlebell_Turkish_Get-Up_Lunge_style,Kettlebell Turkish Get-Up (Lunge Style),Shoulders,Kettlebells,Compound
+Kettlebell_Turkish_Get-Up_Squat_style,Kettlebell Turkish Get-Up (Squat Style),Shoulders,Kettlebells,Compound
+Kettlebell_Windmill,Kettlebell Windmill,Abdominals,Kettlebells,Compound
+Kipping_Muscle_Up,Kipping Muscle Up,Lats,Other,Compound
+Knee_Across_The_Body,Knee Across The Body,Glutes,Bodyweight,Compound
+Knee_Circles,Knee Circles,Calves,Bodyweight,Compound
+Knee_Hip_Raise_On_Parallel_Bars,Knee/Hip Raise On Parallel Bars,Abdominals,Other,Isolation
+Knee_Tuck_Jump,Knee Tuck Jump,Hamstrings,Bodyweight,Compound
+Kneeling_Arm_Drill,Kneeling Arm Drill,Shoulders,Bodyweight,Compound
+Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists,Kneeling Cable Crunch With Alternating Oblique Twists,Abdominals,Cable,Isolation
+Kneeling_Cable_Triceps_Extension,Kneeling Cable Triceps Extension,Triceps,Cable,Isolation
+Kneeling_Forearm_Stretch,Kneeling Forearm Stretch,Forearms,Bodyweight,Isolation
+Kneeling_High_Pulley_Row,Kneeling High Pulley Row,Lats,Cable,Compound
+Kneeling_Hip_Flexor,Kneeling Hip Flexor,Quadriceps,Bodyweight,Isolation
+Kneeling_Jump_Squat,Kneeling Jump Squat,Glutes,Barbell,Compound
+Kneeling_Single-Arm_High_Pulley_Row,Kneeling Single-Arm High Pulley Row,Lats,Cable,Compound
+Kneeling_Squat,Kneeling Squat,Glutes,Barbell,Compound
+Landmine_180s,Landmine 180'S,Abdominals,Barbell,Compound
+Landmine_Linear_Jammer,Landmine Linear Jammer,Shoulders,Barbell,Compound
+Lateral_Bound,Lateral Bound,Adductors,Bodyweight,Compound
+Lateral_Box_Jump,Lateral Box Jump,Adductors,Other,Compound
+Lateral_Cone_Hops,Lateral Cone Hops,Adductors,Other,Compound
+Lateral_Raise_-_With_Bands,Lateral Raise - With Bands,Shoulders,Bands,Isolation
+Latissimus_Dorsi-SMR,Latissimus Dorsi-Smr,Lats,Foam Roll,Isolation
+Leg-Over_Floor_Press,Leg-Over Floor Press,Chest,Kettlebells,Compound
+Leg-Up_Hamstring_Stretch,Leg-Up Hamstring Stretch,Hamstrings,Bodyweight,Isolation
+Leg_Extensions,Leg Extensions,Quadriceps,Machine,Isolation
+Leg_Lift,Leg Lift,Glutes,Bodyweight,Isolation
+Leg_Press,Leg Press,Quadriceps,Machine,Compound
+Leg_Pull-In,Leg Pull-In,Abdominals,Bodyweight,Compound
+Leverage_Chest_Press,Leverage Chest Press,Chest,Machine,Compound
+Leverage_Deadlift,Leverage Deadlift,Quadriceps,Machine,Compound
+Leverage_Decline_Chest_Press,Leverage Decline Chest Press,Chest,Machine,Compound
+Leverage_High_Row,Leverage High Row,Middle Back,Machine,Compound
+Leverage_Incline_Chest_Press,Leverage Incline Chest Press,Chest,Machine,Compound
+Leverage_Iso_Row,Leverage Iso Row,Lats,Machine,Compound
+Leverage_Shoulder_Press,Leverage Shoulder Press,Shoulders,Machine,Compound
+Leverage_Shrug,Leverage Shrug,Traps,Machine,Isolation
+Linear_3-Part_Start_Technique,Linear 3-Part Start Technique,Hamstrings,Bodyweight,Compound
+Linear_Acceleration_Wall_Drill,Linear Acceleration Wall Drill,Hamstrings,Bodyweight,Compound
+Linear_Depth_Jump,Linear Depth Jump,Quadriceps,Other,Compound
+Log_Lift,Log Lift,Shoulders,Other,Compound
+London_Bridges,London Bridges,Lats,Other,Compound
+Looking_At_Ceiling,Looking At Ceiling,Quadriceps,Bodyweight,Isolation
+Low_Cable_Crossover,Low Cable Crossover,Chest,Cable,Isolation
+Low_Cable_Triceps_Extension,Low Cable Triceps Extension,Triceps,Cable,Isolation
+Low_Pulley_Row_To_Neck,Low Pulley Row To Neck,Shoulders,Cable,Compound
+Lower_Back-SMR,Lower Back-Smr,Lower Back,Foam Roll,Compound
+Lower_Back_Curl,Lower Back Curl,Abdominals,Bodyweight,Compound
+Lunge_Pass_Through,Lunge Pass Through,Hamstrings,Kettlebells,Compound
+Lunge_Sprint,Lunge Sprint,Quadriceps,Machine,Compound
+Lying_Bent_Leg_Groin,Lying Bent Leg Groin,Adductors,Other,Compound
+Lying_Cable_Curl,Lying Cable Curl,Biceps,Cable,Isolation
+Lying_Cambered_Barbell_Row,Lying Cambered Barbell Row,Middle Back,Barbell,Isolation
+Lying_Close-Grip_Bar_Curl_On_High_Pulley,Lying Close-Grip Bar Curl On High Pulley,Biceps,Cable,Isolation
+Lying_Close-Grip_Barbell_Triceps_Extension_Behind_The_Head,Lying Close-Grip Barbell Triceps Extension Behind The Head,Triceps,Barbell,Isolation
+Lying_Close-Grip_Barbell_Triceps_Press_To_Chin,Lying Close-Grip Barbell Triceps Press To Chin,Triceps,E-Z Curl Bar,Isolation
+Lying_Crossover,Lying Crossover,Abductors,Bodyweight,Compound
+Lying_Dumbbell_Tricep_Extension,Lying Dumbbell Tricep Extension,Triceps,Dumbbell,Isolation
+Lying_Face_Down_Plate_Neck_Resistance,Lying Face Down Plate Neck Resistance,Neck,Other,Isolation
+Lying_Face_Up_Plate_Neck_Resistance,Lying Face Up Plate Neck Resistance,Neck,Other,Isolation
+Lying_Glute,Lying Glute,Glutes,Bodyweight,Compound
+Lying_Hamstring,Lying Hamstring,Hamstrings,Other,Compound
+Lying_High_Bench_Barbell_Curl,Lying High Bench Barbell Curl,Biceps,Barbell,Isolation
+Lying_Leg_Curls,Lying Leg Curls,Hamstrings,Machine,Isolation
+Lying_Machine_Squat,Lying Machine Squat,Quadriceps,Machine,Compound
+Lying_One-Arm_Lateral_Raise,Lying One-Arm Lateral Raise,Shoulders,Dumbbell,Isolation
+Lying_Prone_Quadriceps,Lying Prone Quadriceps,Quadriceps,Bodyweight,Compound
+Lying_Rear_Delt_Raise,Lying Rear Delt Raise,Shoulders,Dumbbell,Isolation
+Lying_Supine_Dumbbell_Curl,Lying Supine Dumbbell Curl,Biceps,Dumbbell,Isolation
+Lying_T-Bar_Row,Lying T-Bar Row,Middle Back,Machine,Compound
+Lying_Triceps_Press,Lying Triceps Press,Triceps,E-Z Curl Bar,Isolation
+Machine_Bench_Press,Machine Bench Press,Chest,Machine,Compound
+Machine_Bicep_Curl,Machine Bicep Curl,Biceps,Machine,Isolation
+Machine_Preacher_Curls,Machine Preacher Curls,Biceps,Machine,Isolation
+Machine_Shoulder_Military_Press,Machine Shoulder (Military) Press,Shoulders,Machine,Compound
+Machine_Triceps_Extension,Machine Triceps Extension,Triceps,Machine,Isolation
+Medicine_Ball_Chest_Pass,Medicine Ball Chest Pass,Chest,Medicine Ball,Compound
+Medicine_Ball_Full_Twist,Medicine Ball Full Twist,Abdominals,Medicine Ball,Compound
+Medicine_Ball_Scoop_Throw,Medicine Ball Scoop Throw,Shoulders,Medicine Ball,Compound
+Middle_Back_Shrug,Middle Back Shrug,Middle Back,Dumbbell,Isolation
+Middle_Back_Stretch,Middle Back Stretch,Middle Back,Bodyweight,Isolation
+Mixed_Grip_Chin,Mixed Grip Chin,Middle Back,Other,Compound
+Monster_Walk,Monster Walk,Abductors,Bands,Compound
+Mountain_Climbers,Mountain Climbers,Quadriceps,Bodyweight,Compound
+Moving_Claw_Series,Moving Claw Series,Hamstrings,Bodyweight,Compound
+Muscle_Snatch,Muscle Snatch,Hamstrings,Barbell,Compound
+Muscle_Up,Muscle Up,Lats,Other,Compound
+Narrow_Stance_Hack_Squats,Narrow Stance Hack Squats,Quadriceps,Machine,Compound
+Narrow_Stance_Leg_Press,Narrow Stance Leg Press,Quadriceps,Machine,Compound
+Narrow_Stance_Squats,Narrow Stance Squats,Quadriceps,Barbell,Compound
+Natural_Glute_Ham_Raise,Natural Glute Ham Raise,Hamstrings,Bodyweight,Compound
+Neck-SMR,Neck-Smr,Neck,Other,Compound
+Neck_Press,Neck Press,Chest,Barbell,Compound
+Oblique_Crunches,Oblique Crunches,Abdominals,Bodyweight,Isolation
+Oblique_Crunches_-_On_The_Floor,Oblique Crunches - On The Floor,Abdominals,Bodyweight,Isolation
+Olympic_Squat,Olympic Squat,Quadriceps,Barbell,Compound
+On-Your-Back_Quad_Stretch,On-Your-Back Quad Stretch,Quadriceps,Other,Isolation
+On_Your_Side_Quad_Stretch,On Your Side Quad Stretch,Quadriceps,Bodyweight,Isolation
+One-Arm_Dumbbell_Row,One-Arm Dumbbell Row,Middle Back,Dumbbell,Compound
+One-Arm_Flat_Bench_Dumbbell_Flye,One-Arm Flat Bench Dumbbell Flye,Chest,Dumbbell,Isolation
+One-Arm_High-Pulley_Cable_Side_Bends,One-Arm High-Pulley Cable Side Bends,Abdominals,Cable,Isolation
+One-Arm_Incline_Lateral_Raise,One-Arm Incline Lateral Raise,Shoulders,Dumbbell,Isolation
+One-Arm_Kettlebell_Clean,One-Arm Kettlebell Clean,Hamstrings,Kettlebells,Compound
+One-Arm_Kettlebell_Clean_and_Jerk,One-Arm Kettlebell Clean And Jerk,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Floor_Press,One-Arm Kettlebell Floor Press,Chest,Kettlebells,Compound
+One-Arm_Kettlebell_Jerk,One-Arm Kettlebell Jerk,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Military_Press_To_The_Side,One-Arm Kettlebell Military Press To The Side,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Para_Press,One-Arm Kettlebell Para Press,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Push_Press,One-Arm Kettlebell Push Press,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Row,One-Arm Kettlebell Row,Middle Back,Kettlebells,Compound
+One-Arm_Kettlebell_Snatch,One-Arm Kettlebell Snatch,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Split_Jerk,One-Arm Kettlebell Split Jerk,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Split_Snatch,One-Arm Kettlebell Split Snatch,Shoulders,Kettlebells,Compound
+One-Arm_Kettlebell_Swings,One-Arm Kettlebell Swings,Hamstrings,Kettlebells,Compound
+One-Arm_Long_Bar_Row,One-Arm Long Bar Row,Middle Back,Barbell,Compound
+One-Arm_Medicine_Ball_Slam,One-Arm Medicine Ball Slam,Abdominals,Medicine Ball,Compound
+One-Arm_Open_Palm_Kettlebell_Clean,One-Arm Open Palm Kettlebell Clean,Hamstrings,Kettlebells,Compound
+One-Arm_Overhead_Kettlebell_Squats,One-Arm Overhead Kettlebell Squats,Quadriceps,Kettlebells,Compound
+One-Arm_Side_Deadlift,One-Arm Side Deadlift,Quadriceps,Barbell,Compound
+One-Arm_Side_Laterals,One-Arm Side Laterals,Shoulders,Dumbbell,Isolation
+One-Legged_Cable_Kickback,One-Legged Cable Kickback,Glutes,Cable,Isolation
+One_Arm_Against_Wall,One Arm Against Wall,Lats,Bodyweight,Isolation
+One_Arm_Chin-Up,One Arm Chin-Up,Middle Back,Other,Compound
+One_Arm_Dumbbell_Bench_Press,One Arm Dumbbell Bench Press,Chest,Dumbbell,Compound
+One_Arm_Dumbbell_Preacher_Curl,One Arm Dumbbell Preacher Curl,Biceps,Dumbbell,Isolation
+One_Arm_Floor_Press,One Arm Floor Press,Triceps,Barbell,Compound
+One_Arm_Lat_Pulldown,One Arm Lat Pulldown,Lats,Cable,Compound
+One_Arm_Pronated_Dumbbell_Triceps_Extension,One Arm Pronated Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+One_Arm_Supinated_Dumbbell_Triceps_Extension,One Arm Supinated Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+One_Half_Locust,One Half Locust,Quadriceps,Bodyweight,Compound
+One_Handed_Hang,One Handed Hang,Lats,Other,Compound
+One_Knee_To_Chest,One Knee To Chest,Glutes,Bodyweight,Compound
+One_Leg_Barbell_Squat,One Leg Barbell Squat,Quadriceps,Barbell,Compound
+Open_Palm_Kettlebell_Clean,Open Palm Kettlebell Clean,Hamstrings,Kettlebells,Compound
+Otis-Up,Otis-Up,Abdominals,Other,Compound
+Overhead_Cable_Curl,Overhead Cable Curl,Biceps,Cable,Isolation
+Overhead_Lat,Overhead Lat,Lats,Other,Compound
+Overhead_Slam,Overhead Slam,Lats,Medicine Ball,Compound
+Overhead_Squat,Overhead Squat,Quadriceps,Barbell,Compound
+Overhead_Stretch,Overhead Stretch,Abdominals,Bodyweight,Compound
+Overhead_Triceps,Overhead Triceps,Triceps,Bodyweight,Compound
+Pallof_Press,Pallof Press,Abdominals,Cable,Isolation
+Pallof_Press_With_Rotation,Pallof Press With Rotation,Abdominals,Cable,Compound
+Palms-Down_Dumbbell_Wrist_Curl_Over_A_Bench,Palms-Down Dumbbell Wrist Curl Over A Bench,Forearms,Dumbbell,Isolation
+Palms-Down_Wrist_Curl_Over_A_Bench,Palms-Down Wrist Curl Over A Bench,Forearms,Barbell,Isolation
+Palms-Up_Barbell_Wrist_Curl_Over_A_Bench,Palms-Up Barbell Wrist Curl Over A Bench,Forearms,Barbell,Isolation
+Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench,Palms-Up Dumbbell Wrist Curl Over A Bench,Forearms,Dumbbell,Isolation
+Parallel_Bar_Dip,Parallel Bar Dip,Triceps,Other,Compound
+Pelvic_Tilt_Into_Bridge,Pelvic Tilt Into Bridge,Lower Back,Bodyweight,Compound
+Peroneals-SMR,Peroneals-Smr,Calves,Foam Roll,Compound
+Peroneals_Stretch,Peroneals Stretch,Calves,Other,Compound
+Physioball_Hip_Bridge,Physioball Hip Bridge,Glutes,Exercise Ball,Compound
+Pin_Presses,Pin Presses,Triceps,Barbell,Compound
+Piriformis-SMR,Piriformis-Smr,Glutes,Foam Roll,Isolation
+Plank,Plank,Abdominals,Bodyweight,Isolation
+Plate_Pinch,Plate Pinch,Forearms,Other,Isolation
+Plate_Twist,Plate Twist,Abdominals,Other,Compound
+Platform_Hamstring_Slides,Platform Hamstring Slides,Hamstrings,Other,Isolation
+Plie_Dumbbell_Squat,Plie Dumbbell Squat,Quadriceps,Dumbbell,Compound
+Plyo_Kettlebell_Pushups,Plyo Kettlebell Pushups,Chest,Kettlebells,Compound
+Plyo_Push-up,Plyo Push-Up,Chest,Bodyweight,Compound
+Posterior_Tibialis_Stretch,Posterior Tibialis Stretch,Calves,Other,Compound
+Power_Clean,Power Clean,Hamstrings,Barbell,Compound
+Power_Clean_from_Blocks,Power Clean From Blocks,Hamstrings,Barbell,Compound
+Power_Jerk,Power Jerk,Quadriceps,Barbell,Compound
+Power_Partials,Power Partials,Shoulders,Dumbbell,Isolation
+Power_Snatch,Power Snatch,Hamstrings,Barbell,Compound
+Power_Snatch_from_Blocks,Power Snatch From Blocks,Quadriceps,Barbell,Compound
+Power_Stairs,Power Stairs,Hamstrings,Other,Compound
+Preacher_Curl,Preacher Curl,Biceps,Barbell,Isolation
+Preacher_Hammer_Dumbbell_Curl,Preacher Hammer Dumbbell Curl,Biceps,Dumbbell,Isolation
+Press_Sit-Up,Press Sit-Up,Abdominals,Barbell,Compound
+Prone_Manual_Hamstring,Prone Manual Hamstring,Hamstrings,Bodyweight,Isolation
+Prowler_Sprint,Prowler Sprint,Hamstrings,Other,Compound
+Pull_Through,Pull Through,Glutes,Cable,Compound
+Pullups,Pullups,Lats,Bodyweight,Compound
+Push-Up_Wide,Push-Up Wide,Chest,Bodyweight,Compound
+Push-Ups_-_Close_Triceps_Position,Push-Ups - Close Triceps Position,Triceps,Bodyweight,Compound
+Push-Ups_With_Feet_Elevated,Push-Ups With Feet Elevated,Chest,Bodyweight,Compound
+Push-Ups_With_Feet_On_An_Exercise_Ball,Push-Ups With Feet On An Exercise Ball,Chest,Exercise Ball,Compound
+Push_Press,Push Press,Shoulders,Barbell,Compound
+Push_Press_-_Behind_the_Neck,Push Press - Behind The Neck,Shoulders,Barbell,Compound
+Push_Up_to_Side_Plank,Push Up To Side Plank,Chest,Bodyweight,Compound
+Pushups,Pushups,Chest,Bodyweight,Compound
+Pushups_Close_and_Wide_Hand_Positions,Pushups (Close And Wide Hand Positions),Chest,Bodyweight,Compound
+Pyramid,Pyramid,Lower Back,Exercise Ball,Compound
+Quad_Stretch,Quad Stretch,Quadriceps,Other,Compound
+Quadriceps-SMR,Quadriceps-Smr,Quadriceps,Foam Roll,Isolation
+Quick_Leap,Quick Leap,Quadriceps,Other,Compound
+Rack_Delivery,Rack Delivery,Shoulders,Barbell,Compound
+Rack_Pull_with_Bands,Rack Pull With Bands,Lower Back,Barbell,Compound
+Rack_Pulls,Rack Pulls,Lower Back,Barbell,Compound
+Rear_Leg_Raises,Rear Leg Raises,Quadriceps,Bodyweight,Compound
+Recumbent_Bike,Recumbent Bike,Quadriceps,Machine,Compound
+Return_Push_from_Stance,Return Push From Stance,Shoulders,Medicine Ball,Compound
+Reverse_Band_Bench_Press,Reverse Band Bench Press,Triceps,Barbell,Compound
+Reverse_Band_Box_Squat,Reverse Band Box Squat,Quadriceps,Barbell,Compound
+Reverse_Band_Deadlift,Reverse Band Deadlift,Lower Back,Barbell,Compound
+Reverse_Band_Power_Squat,Reverse Band Power Squat,Quadriceps,Barbell,Compound
+Reverse_Band_Sumo_Deadlift,Reverse Band Sumo Deadlift,Hamstrings,Barbell,Compound
+Reverse_Barbell_Curl,Reverse Barbell Curl,Biceps,Barbell,Isolation
+Reverse_Barbell_Preacher_Curls,Reverse Barbell Preacher Curls,Biceps,E-Z Curl Bar,Isolation
+Reverse_Cable_Curl,Reverse Cable Curl,Biceps,Cable,Isolation
+Reverse_Crunch,Reverse Crunch,Abdominals,Bodyweight,Isolation
+Reverse_Flyes,Reverse Flyes,Shoulders,Dumbbell,Isolation
+Reverse_Flyes_With_External_Rotation,Reverse Flyes With External Rotation,Shoulders,Dumbbell,Isolation
+Reverse_Grip_Bent-Over_Rows,Reverse Grip Bent-Over Rows,Middle Back,Barbell,Compound
+Reverse_Grip_Triceps_Pushdown,Reverse Grip Triceps Pushdown,Triceps,Cable,Isolation
+Reverse_Hyperextension,Reverse Hyperextension,Hamstrings,Machine,Compound
+Reverse_Machine_Flyes,Reverse Machine Flyes,Shoulders,Machine,Isolation
+Reverse_Plate_Curls,Reverse Plate Curls,Biceps,Other,Isolation
+Reverse_Triceps_Bench_Press,Reverse Triceps Bench Press,Triceps,Barbell,Compound
+Rhomboids-SMR,Rhomboids-Smr,Middle Back,Foam Roll,Compound
+Rickshaw_Carry,Rickshaw Carry,Forearms,Other,Compound
+Rickshaw_Deadlift,Rickshaw Deadlift,Quadriceps,Other,Compound
+Ring_Dips,Ring Dips,Triceps,Other,Compound
+Rocket_Jump,Rocket Jump,Quadriceps,Bodyweight,Compound
+Rocking_Standing_Calf_Raise,Rocking Standing Calf Raise,Calves,Barbell,Isolation
+Rocky_Pull-Ups_Pulldowns,Rocky Pull-Ups/Pulldowns,Lats,Other,Compound
+Romanian_Deadlift,Romanian Deadlift,Hamstrings,Barbell,Compound
+Romanian_Deadlift_from_Deficit,Romanian Deadlift From Deficit,Hamstrings,Barbell,Compound
+Rope_Climb,Rope Climb,Lats,Other,Compound
+Rope_Crunch,Rope Crunch,Abdominals,Cable,Isolation
+Rope_Jumping,Rope Jumping,Quadriceps,Other,Compound
+Rope_Straight-Arm_Pulldown,Rope Straight-Arm Pulldown,Lats,Cable,Isolation
+Round_The_World_Shoulder_Stretch,Round The World Shoulder Stretch,Shoulders,Other,Compound
+Rowing_Stationary,"Rowing, Stationary",Quadriceps,Machine,Compound
+Runners_Stretch,Runner'S Stretch,Hamstrings,Bodyweight,Compound
+Running_Treadmill,"Running, Treadmill",Quadriceps,Machine,Compound
+Russian_Twist,Russian Twist,Abdominals,Bodyweight,Compound
+Sandbag_Load,Sandbag Load,Quadriceps,Other,Compound
+Scapular_Pull-Up,Scapular Pull-Up,Traps,Bodyweight,Isolation
+Scissor_Kick,Scissor Kick,Abdominals,Bodyweight,Isolation
+Scissors_Jump,Scissors Jump,Quadriceps,Bodyweight,Compound
+Seated_Band_Hamstring_Curl,Seated Band Hamstring Curl,Hamstrings,Other,Isolation
+Seated_Barbell_Military_Press,Seated Barbell Military Press,Shoulders,Barbell,Compound
+Seated_Barbell_Twist,Seated Barbell Twist,Abdominals,Barbell,Isolation
+Seated_Bent-Over_One-Arm_Dumbbell_Triceps_Extension,Seated Bent-Over One-Arm Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Seated_Bent-Over_Rear_Delt_Raise,Seated Bent-Over Rear Delt Raise,Shoulders,Dumbbell,Isolation
+Seated_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension,Seated Bent-Over Two-Arm Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Seated_Biceps,Seated Biceps,Biceps,Bodyweight,Isolation
+Seated_Cable_Rows,Seated Cable Rows,Middle Back,Cable,Compound
+Seated_Cable_Shoulder_Press,Seated Cable Shoulder Press,Shoulders,Cable,Compound
+Seated_Calf_Raise,Seated Calf Raise,Calves,Machine,Isolation
+Seated_Calf_Stretch,Seated Calf Stretch,Calves,Bodyweight,Compound
+Seated_Close-Grip_Concentration_Barbell_Curl,Seated Close-Grip Concentration Barbell Curl,Biceps,Barbell,Isolation
+Seated_Dumbbell_Curl,Seated Dumbbell Curl,Biceps,Dumbbell,Isolation
+Seated_Dumbbell_Inner_Biceps_Curl,Seated Dumbbell Inner Biceps Curl,Biceps,Dumbbell,Isolation
+Seated_Dumbbell_Palms-Down_Wrist_Curl,Seated Dumbbell Palms-Down Wrist Curl,Forearms,Dumbbell,Isolation
+Seated_Dumbbell_Palms-Up_Wrist_Curl,Seated Dumbbell Palms-Up Wrist Curl,Forearms,Dumbbell,Isolation
+Seated_Dumbbell_Press,Seated Dumbbell Press,Shoulders,Dumbbell,Compound
+Seated_Flat_Bench_Leg_Pull-In,Seated Flat Bench Leg Pull-In,Abdominals,Bodyweight,Compound
+Seated_Floor_Hamstring_Stretch,Seated Floor Hamstring Stretch,Hamstrings,Bodyweight,Compound
+Seated_Front_Deltoid,Seated Front Deltoid,Shoulders,Bodyweight,Compound
+Seated_Glute,Seated Glute,Glutes,Bodyweight,Compound
+Seated_Good_Mornings,Seated Good Mornings,Lower Back,Barbell,Compound
+Seated_Hamstring,Seated Hamstring,Hamstrings,Bodyweight,Compound
+Seated_Hamstring_and_Calf_Stretch,Seated Hamstring And Calf Stretch,Hamstrings,Other,Compound
+Seated_Head_Harness_Neck_Resistance,Seated Head Harness Neck Resistance,Neck,Other,Isolation
+Seated_Leg_Curl,Seated Leg Curl,Hamstrings,Machine,Isolation
+Seated_Leg_Tucks,Seated Leg Tucks,Abdominals,Bodyweight,Isolation
+Seated_One-Arm_Dumbbell_Palms-Down_Wrist_Curl,Seated One-Arm Dumbbell Palms-Down Wrist Curl,Forearms,Dumbbell,Isolation
+Seated_One-Arm_Dumbbell_Palms-Up_Wrist_Curl,Seated One-Arm Dumbbell Palms-Up Wrist Curl,Forearms,Dumbbell,Isolation
+Seated_One-arm_Cable_Pulley_Rows,Seated One-Arm Cable Pulley Rows,Middle Back,Cable,Compound
+Seated_Overhead_Stretch,Seated Overhead Stretch,Abdominals,Bodyweight,Isolation
+Seated_Palm-Up_Barbell_Wrist_Curl,Seated Palm-Up Barbell Wrist Curl,Forearms,Barbell,Isolation
+Seated_Palms-Down_Barbell_Wrist_Curl,Seated Palms-Down Barbell Wrist Curl,Forearms,Barbell,Isolation
+Seated_Side_Lateral_Raise,Seated Side Lateral Raise,Shoulders,Dumbbell,Isolation
+Seated_Triceps_Press,Seated Triceps Press,Triceps,Dumbbell,Isolation
+Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl,Seated Two-Arm Palms-Up Low-Pulley Wrist Curl,Forearms,Cable,Isolation
+See-Saw_Press_Alternating_Side_Press,See-Saw Press (Alternating Side Press),Shoulders,Dumbbell,Compound
+Shotgun_Row,Shotgun Row,Lats,Cable,Compound
+Shoulder_Circles,Shoulder Circles,Shoulders,Bodyweight,Compound
+Shoulder_Press_-_With_Bands,Shoulder Press - With Bands,Shoulders,Bands,Compound
+Shoulder_Raise,Shoulder Raise,Shoulders,Bodyweight,Compound
+Shoulder_Stretch,Shoulder Stretch,Shoulders,Bodyweight,Compound
+Side-Lying_Floor_Stretch,Side-Lying Floor Stretch,Lats,Bodyweight,Compound
+Side_Bridge,Side Bridge,Abdominals,Bodyweight,Compound
+Side_Hop-Sprint,Side Hop-Sprint,Quadriceps,Other,Compound
+Side_Jackknife,Side Jackknife,Abdominals,Bodyweight,Compound
+Side_Lateral_Raise,Side Lateral Raise,Shoulders,Dumbbell,Isolation
+Side_Laterals_to_Front_Raise,Side Laterals To Front Raise,Shoulders,Dumbbell,Isolation
+Side_Leg_Raises,Side Leg Raises,Adductors,Bodyweight,Compound
+Side_Lying_Groin_Stretch,Side Lying Groin Stretch,Adductors,Bodyweight,Isolation
+Side_Neck_Stretch,Side Neck Stretch,Neck,Bodyweight,Isolation
+Side_Standing_Long_Jump,Side Standing Long Jump,Quadriceps,Bodyweight,Compound
+Side_To_Side_Chins,Side To Side Chins,Lats,Other,Compound
+Side_Wrist_Pull,Side Wrist Pull,Shoulders,Bodyweight,Isolation
+Side_to_Side_Box_Shuffle,Side To Side Box Shuffle,Quadriceps,Other,Compound
+Single-Arm_Cable_Crossover,Single-Arm Cable Crossover,Chest,Cable,Isolation
+Single-Arm_Linear_Jammer,Single-Arm Linear Jammer,Shoulders,Barbell,Compound
+Single-Arm_Push-Up,Single-Arm Push-Up,Chest,Bodyweight,Compound
+Single-Cone_Sprint_Drill,Single-Cone Sprint Drill,Quadriceps,Other,Compound
+Single-Leg_High_Box_Squat,Single-Leg High Box Squat,Quadriceps,Other,Compound
+Single-Leg_Hop_Progression,Single-Leg Hop Progression,Quadriceps,Other,Compound
+Single-Leg_Lateral_Hop,Single-Leg Lateral Hop,Quadriceps,Other,Compound
+Single-Leg_Leg_Extension,Single-Leg Leg Extension,Quadriceps,Machine,Isolation
+Single-Leg_Stride_Jump,Single-Leg Stride Jump,Quadriceps,Other,Compound
+Single_Dumbbell_Raise,Single Dumbbell Raise,Shoulders,Dumbbell,Isolation
+Single_Leg_Butt_Kick,Single Leg Butt Kick,Quadriceps,Bodyweight,Compound
+Single_Leg_Glute_Bridge,Single Leg Glute Bridge,Glutes,Bodyweight,Isolation
+Single_Leg_Push-off,Single Leg Push-Off,Quadriceps,Other,Compound
+Sit-Up,Sit-Up,Abdominals,Bodyweight,Isolation
+Sit_Squats,Sit Squats,Quadriceps,Bodyweight,Compound
+Skating,Skating,Quadriceps,Other,Compound
+Sled_Drag_-_Harness,Sled Drag - Harness,Quadriceps,Other,Compound
+Sled_Overhead_Backward_Walk,Sled Overhead Backward Walk,Shoulders,Other,Compound
+Sled_Overhead_Triceps_Extension,Sled Overhead Triceps Extension,Triceps,Other,Isolation
+Sled_Push,Sled Push,Quadriceps,Other,Compound
+Sled_Reverse_Flye,Sled Reverse Flye,Shoulders,Other,Isolation
+Sled_Row,Sled Row,Middle Back,Other,Compound
+Sledgehammer_Swings,Sledgehammer Swings,Abdominals,Other,Compound
+Smith_Incline_Shoulder_Raise,Smith Incline Shoulder Raise,Shoulders,Barbell,Isolation
+Smith_Machine_Behind_the_Back_Shrug,Smith Machine Behind The Back Shrug,Traps,Machine,Isolation
+Smith_Machine_Bench_Press,Smith Machine Bench Press,Chest,Machine,Compound
+Smith_Machine_Bent_Over_Row,Smith Machine Bent Over Row,Middle Back,Machine,Compound
+Smith_Machine_Calf_Raise,Smith Machine Calf Raise,Calves,Machine,Isolation
+Smith_Machine_Close-Grip_Bench_Press,Smith Machine Close-Grip Bench Press,Triceps,Machine,Compound
+Smith_Machine_Decline_Press,Smith Machine Decline Press,Chest,Machine,Compound
+Smith_Machine_Hang_Power_Clean,Smith Machine Hang Power Clean,Hamstrings,Machine,Compound
+Smith_Machine_Hip_Raise,Smith Machine Hip Raise,Abdominals,Machine,Isolation
+Smith_Machine_Incline_Bench_Press,Smith Machine Incline Bench Press,Chest,Machine,Compound
+Smith_Machine_Leg_Press,Smith Machine Leg Press,Quadriceps,Machine,Compound
+Smith_Machine_One-Arm_Upright_Row,Smith Machine One-Arm Upright Row,Shoulders,Machine,Compound
+Smith_Machine_Overhead_Shoulder_Press,Smith Machine Overhead Shoulder Press,Shoulders,Machine,Compound
+Smith_Machine_Pistol_Squat,Smith Machine Pistol Squat,Quadriceps,Machine,Compound
+Smith_Machine_Reverse_Calf_Raises,Smith Machine Reverse Calf Raises,Calves,Machine,Isolation
+Smith_Machine_Squat,Smith Machine Squat,Quadriceps,Machine,Compound
+Smith_Machine_Stiff-Legged_Deadlift,Smith Machine Stiff-Legged Deadlift,Hamstrings,Machine,Compound
+Smith_Machine_Upright_Row,Smith Machine Upright Row,Traps,Machine,Compound
+Smith_Single-Leg_Split_Squat,Smith Single-Leg Split Squat,Quadriceps,Machine,Compound
+Snatch,Snatch,Quadriceps,Barbell,Compound
+Snatch_Balance,Snatch Balance,Quadriceps,Barbell,Compound
+Snatch_Deadlift,Snatch Deadlift,Hamstrings,Barbell,Compound
+Snatch_Pull,Snatch Pull,Hamstrings,Barbell,Compound
+Snatch_Shrug,Snatch Shrug,Traps,Barbell,Compound
+Snatch_from_Blocks,Snatch From Blocks,Quadriceps,Barbell,Compound
+Speed_Band_Overhead_Triceps,Speed Band Overhead Triceps,Triceps,Bands,Isolation
+Speed_Box_Squat,Speed Box Squat,Quadriceps,Barbell,Compound
+Speed_Squats,Speed Squats,Quadriceps,Barbell,Compound
+Spell_Caster,Spell Caster,Abdominals,Dumbbell,Compound
+Spider_Crawl,Spider Crawl,Abdominals,Bodyweight,Compound
+Spider_Curl,Spider Curl,Biceps,E-Z Curl Bar,Isolation
+Spinal_Stretch,Spinal Stretch,Middle Back,Bodyweight,Isolation
+Split_Clean,Split Clean,Quadriceps,Barbell,Compound
+Split_Jerk,Split Jerk,Quadriceps,Barbell,Compound
+Split_Jump,Split Jump,Quadriceps,Bodyweight,Compound
+Split_Snatch,Split Snatch,Hamstrings,Barbell,Compound
+Split_Squat_with_Dumbbells,Split Squat With Dumbbells,Quadriceps,Dumbbell,Compound
+Split_Squats,Split Squats,Hamstrings,Bodyweight,Compound
+Squat_Jerk,Squat Jerk,Quadriceps,Barbell,Compound
+Squat_with_Bands,Squat With Bands,Quadriceps,Barbell,Compound
+Squat_with_Chains,Squat With Chains,Quadriceps,Barbell,Compound
+Squat_with_Plate_Movers,Squat With Plate Movers,Quadriceps,Barbell,Compound
+Squats_-_With_Bands,Squats - With Bands,Quadriceps,Bands,Compound
+Stairmaster,Stairmaster,Quadriceps,Machine,Compound
+Standing_Alternating_Dumbbell_Press,Standing Alternating Dumbbell Press,Shoulders,Dumbbell,Compound
+Standing_Barbell_Calf_Raise,Standing Barbell Calf Raise,Calves,Barbell,Isolation
+Standing_Barbell_Press_Behind_Neck,Standing Barbell Press Behind Neck,Shoulders,Barbell,Compound
+Standing_Bent-Over_One-Arm_Dumbbell_Triceps_Extension,Standing Bent-Over One-Arm Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Standing_Bent-Over_Two-Arm_Dumbbell_Triceps_Extension,Standing Bent-Over Two-Arm Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Standing_Biceps_Cable_Curl,Standing Biceps Cable Curl,Biceps,Cable,Isolation
+Standing_Biceps_Stretch,Standing Biceps Stretch,Biceps,Other,Isolation
+Standing_Bradford_Press,Standing Bradford Press,Shoulders,Barbell,Compound
+Standing_Cable_Chest_Press,Standing Cable Chest Press,Chest,Cable,Compound
+Standing_Cable_Lift,Standing Cable Lift,Abdominals,Cable,Compound
+Standing_Cable_Wood_Chop,Standing Cable Wood Chop,Abdominals,Cable,Compound
+Standing_Calf_Raises,Standing Calf Raises,Calves,Machine,Isolation
+Standing_Concentration_Curl,Standing Concentration Curl,Biceps,Dumbbell,Isolation
+Standing_Dumbbell_Calf_Raise,Standing Dumbbell Calf Raise,Calves,Dumbbell,Isolation
+Standing_Dumbbell_Press,Standing Dumbbell Press,Shoulders,Dumbbell,Compound
+Standing_Dumbbell_Reverse_Curl,Standing Dumbbell Reverse Curl,Biceps,Dumbbell,Isolation
+Standing_Dumbbell_Straight-Arm_Front_Delt_Raise_Above_Head,Standing Dumbbell Straight-Arm Front Delt Raise Above Head,Shoulders,Dumbbell,Isolation
+Standing_Dumbbell_Triceps_Extension,Standing Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Standing_Dumbbell_Upright_Row,Standing Dumbbell Upright Row,Traps,Dumbbell,Compound
+Standing_Elevated_Quad_Stretch,Standing Elevated Quad Stretch,Quadriceps,Other,Compound
+Standing_Front_Barbell_Raise_Over_Head,Standing Front Barbell Raise Over Head,Shoulders,Barbell,Isolation
+Standing_Gastrocnemius_Calf_Stretch,Standing Gastrocnemius Calf Stretch,Calves,Bodyweight,Compound
+Standing_Hamstring_and_Calf_Stretch,Standing Hamstring And Calf Stretch,Hamstrings,Other,Compound
+Standing_Hip_Circles,Standing Hip Circles,Abductors,Bodyweight,Isolation
+Standing_Hip_Flexors,Standing Hip Flexors,Quadriceps,Bodyweight,Isolation
+Standing_Inner-Biceps_Curl,Standing Inner-Biceps Curl,Biceps,Dumbbell,Isolation
+Standing_Lateral_Stretch,Standing Lateral Stretch,Abdominals,Bodyweight,Compound
+Standing_Leg_Curl,Standing Leg Curl,Hamstrings,Machine,Isolation
+Standing_Long_Jump,Standing Long Jump,Quadriceps,Bodyweight,Compound
+Standing_Low-Pulley_Deltoid_Raise,Standing Low-Pulley Deltoid Raise,Shoulders,Cable,Isolation
+Standing_Low-Pulley_One-Arm_Triceps_Extension,Standing Low-Pulley One-Arm Triceps Extension,Triceps,Cable,Isolation
+Standing_Military_Press,Standing Military Press,Shoulders,Barbell,Compound
+Standing_Olympic_Plate_Hand_Squeeze,Standing Olympic Plate Hand Squeeze,Forearms,Other,Isolation
+Standing_One-Arm_Cable_Curl,Standing One-Arm Cable Curl,Biceps,Cable,Isolation
+Standing_One-Arm_Dumbbell_Curl_Over_Incline_Bench,Standing One-Arm Dumbbell Curl Over Incline Bench,Biceps,Dumbbell,Isolation
+Standing_One-Arm_Dumbbell_Triceps_Extension,Standing One-Arm Dumbbell Triceps Extension,Triceps,Dumbbell,Isolation
+Standing_Overhead_Barbell_Triceps_Extension,Standing Overhead Barbell Triceps Extension,Triceps,Barbell,Isolation
+Standing_Palm-In_One-Arm_Dumbbell_Press,Standing Palm-In One-Arm Dumbbell Press,Shoulders,Dumbbell,Compound
+Standing_Palms-In_Dumbbell_Press,Standing Palms-In Dumbbell Press,Shoulders,Dumbbell,Compound
+Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl,Standing Palms-Up Barbell Behind The Back Wrist Curl,Forearms,Barbell,Isolation
+Standing_Pelvic_Tilt,Standing Pelvic Tilt,Lower Back,Bodyweight,Isolation
+Standing_Rope_Crunch,Standing Rope Crunch,Abdominals,Cable,Isolation
+Standing_Soleus_And_Achilles_Stretch,Standing Soleus And Achilles Stretch,Calves,Bodyweight,Isolation
+Standing_Toe_Touches,Standing Toe Touches,Hamstrings,Bodyweight,Compound
+Standing_Towel_Triceps_Extension,Standing Towel Triceps Extension,Triceps,Bodyweight,Isolation
+Standing_Two-Arm_Overhead_Throw,Standing Two-Arm Overhead Throw,Shoulders,Medicine Ball,Compound
+Star_Jump,Star Jump,Quadriceps,Bodyweight,Compound
+Step-up_with_Knee_Raise,Step-Up With Knee Raise,Glutes,Bodyweight,Compound
+Step_Mill,Step Mill,Quadriceps,Machine,Compound
+Stiff-Legged_Barbell_Deadlift,Stiff-Legged Barbell Deadlift,Hamstrings,Barbell,Compound
+Stiff-Legged_Dumbbell_Deadlift,Stiff-Legged Dumbbell Deadlift,Hamstrings,Dumbbell,Compound
+Stiff_Leg_Barbell_Good_Morning,Stiff Leg Barbell Good Morning,Lower Back,Barbell,Compound
+Stomach_Vacuum,Stomach Vacuum,Abdominals,Bodyweight,Isolation
+Straight-Arm_Dumbbell_Pullover,Straight-Arm Dumbbell Pullover,Chest,Dumbbell,Compound
+Straight-Arm_Pulldown,Straight-Arm Pulldown,Lats,Cable,Isolation
+Straight_Bar_Bench_Mid_Rows,Straight Bar Bench Mid Rows,Middle Back,Barbell,Compound
+Straight_Raises_on_Incline_Bench,Straight Raises On Incline Bench,Shoulders,Barbell,Isolation
+Stride_Jump_Crossover,Stride Jump Crossover,Quadriceps,Other,Compound
+Sumo_Deadlift,Sumo Deadlift,Hamstrings,Barbell,Compound
+Sumo_Deadlift_with_Bands,Sumo Deadlift With Bands,Hamstrings,Barbell,Compound
+Sumo_Deadlift_with_Chains,Sumo Deadlift With Chains,Hamstrings,Barbell,Compound
+Superman,Superman,Lower Back,Bodyweight,Compound
+Supine_Chest_Throw,Supine Chest Throw,Triceps,Medicine Ball,Compound
+Supine_One-Arm_Overhead_Throw,Supine One-Arm Overhead Throw,Abdominals,Medicine Ball,Compound
+Supine_Two-Arm_Overhead_Throw,Supine Two-Arm Overhead Throw,Abdominals,Medicine Ball,Compound
+Suspended_Fallout,Suspended Fallout,Abdominals,Other,Isolation
+Suspended_Push-Up,Suspended Push-Up,Chest,Other,Compound
+Suspended_Reverse_Crunch,Suspended Reverse Crunch,Abdominals,Other,Isolation
+Suspended_Row,Suspended Row,Middle Back,Other,Compound
+Suspended_Split_Squat,Suspended Split Squat,Quadriceps,Other,Compound
+Svend_Press,Svend Press,Chest,Other,Compound
+T-Bar_Row_with_Handle,T-Bar Row With Handle,Middle Back,Barbell,Compound
+Tate_Press,Tate Press,Triceps,Dumbbell,Isolation
+The_Straddle,The Straddle,Hamstrings,Bodyweight,Compound
+Thigh_Abductor,Thigh Abductor,Abductors,Machine,Isolation
+Thigh_Adductor,Thigh Adductor,Adductors,Machine,Isolation
+Tire_Flip,Tire Flip,Quadriceps,Other,Compound
+Toe_Touchers,Toe Touchers,Abdominals,Bodyweight,Isolation
+Torso_Rotation,Torso Rotation,Abdominals,Exercise Ball,Compound
+Trail_Running_Walking,Trail Running/Walking,Quadriceps,Bodyweight,Compound
+Trap_Bar_Deadlift,Trap Bar Deadlift,Quadriceps,Other,Compound
+Tricep_Dumbbell_Kickback,Tricep Dumbbell Kickback,Triceps,Dumbbell,Isolation
+Tricep_Side_Stretch,Tricep Side Stretch,Triceps,Bodyweight,Compound
+Triceps_Overhead_Extension_with_Rope,Triceps Overhead Extension With Rope,Triceps,Cable,Isolation
+Triceps_Pushdown,Triceps Pushdown,Triceps,Cable,Isolation
+Triceps_Pushdown_-_Rope_Attachment,Triceps Pushdown - Rope Attachment,Triceps,Cable,Isolation
+Triceps_Pushdown_-_V-Bar_Attachment,Triceps Pushdown - V-Bar Attachment,Triceps,Cable,Isolation
+Triceps_Stretch,Triceps Stretch,Triceps,Bodyweight,Isolation
+Tuck_Crunch,Tuck Crunch,Abdominals,Bodyweight,Isolation
+Two-Arm_Dumbbell_Preacher_Curl,Two-Arm Dumbbell Preacher Curl,Biceps,Dumbbell,Isolation
+Two-Arm_Kettlebell_Clean,Two-Arm Kettlebell Clean,Shoulders,Kettlebells,Compound
+Two-Arm_Kettlebell_Jerk,Two-Arm Kettlebell Jerk,Shoulders,Kettlebells,Compound
+Two-Arm_Kettlebell_Military_Press,Two-Arm Kettlebell Military Press,Shoulders,Kettlebells,Compound
+Two-Arm_Kettlebell_Row,Two-Arm Kettlebell Row,Middle Back,Kettlebells,Compound
+Underhand_Cable_Pulldowns,Underhand Cable Pulldowns,Lats,Cable,Compound
+Upper_Back-Leg_Grab,Upper Back-Leg Grab,Hamstrings,Bodyweight,Compound
+Upper_Back_Stretch,Upper Back Stretch,Middle Back,Bodyweight,Compound
+Upright_Barbell_Row,Upright Barbell Row,Shoulders,Barbell,Compound
+Upright_Cable_Row,Upright Cable Row,Traps,Cable,Compound
+Upright_Row_-_With_Bands,Upright Row - With Bands,Traps,Bands,Compound
+Upward_Stretch,Upward Stretch,Shoulders,Bodyweight,Compound
+V-Bar_Pulldown,V-Bar Pulldown,Lats,Cable,Compound
+V-Bar_Pullup,V-Bar Pullup,Lats,Bodyweight,Compound
+Vertical_Swing,Vertical Swing,Hamstrings,Dumbbell,Compound
+Walking_Treadmill,"Walking, Treadmill",Quadriceps,Machine,Compound
+Weighted_Ball_Hyperextension,Weighted Ball Hyperextension,Lower Back,Exercise Ball,Compound
+Weighted_Ball_Side_Bend,Weighted Ball Side Bend,Abdominals,Exercise Ball,Isolation
+Weighted_Bench_Dip,Weighted Bench Dip,Triceps,Other,Compound
+Weighted_Crunches,Weighted Crunches,Abdominals,Medicine Ball,Isolation
+Weighted_Jump_Squat,Weighted Jump Squat,Quadriceps,Barbell,Compound
+Weighted_Pull_Ups,Weighted Pull Ups,Lats,Other,Compound
+Weighted_Sissy_Squat,Weighted Sissy Squat,Quadriceps,Barbell,Compound
+Weighted_Sit-Ups_-_With_Bands,Weighted Sit-Ups - With Bands,Abdominals,Other,Isolation
+Weighted_Squat,Weighted Squat,Quadriceps,Other,Compound
+Wide-Grip_Barbell_Bench_Press,Wide-Grip Barbell Bench Press,Chest,Barbell,Compound
+Wide-Grip_Decline_Barbell_Bench_Press,Wide-Grip Decline Barbell Bench Press,Chest,Barbell,Compound
+Wide-Grip_Decline_Barbell_Pullover,Wide-Grip Decline Barbell Pullover,Chest,Barbell,Compound
+Wide-Grip_Lat_Pulldown,Wide-Grip Lat Pulldown,Lats,Cable,Compound
+Wide-Grip_Pulldown_Behind_The_Neck,Wide-Grip Pulldown Behind The Neck,Lats,Cable,Compound
+Wide-Grip_Rear_Pull-Up,Wide-Grip Rear Pull-Up,Lats,Bodyweight,Compound
+Wide-Grip_Standing_Barbell_Curl,Wide-Grip Standing Barbell Curl,Biceps,Barbell,Isolation
+Wide_Stance_Barbell_Squat,Wide Stance Barbell Squat,Quadriceps,Barbell,Compound
+Wide_Stance_Stiff_Legs,Wide Stance Stiff Legs,Hamstrings,Barbell,Compound
+Wind_Sprints,Wind Sprints,Abdominals,Bodyweight,Compound
+Windmills,Windmills,Abductors,Bodyweight,Compound
+Worlds_Greatest_Stretch,World'S Greatest Stretch,Hamstrings,Bodyweight,Compound
+Wrist_Circles,Wrist Circles,Forearms,Bodyweight,Isolation
+Wrist_Roller,Wrist Roller,Forearms,Other,Isolation
+Wrist_Rotations_with_Straight_Bar,Wrist Rotations With Straight Bar,Forearms,Barbell,Isolation
+Yoke_Walk,Yoke Walk,Quadriceps,Other,Compound
+Zercher_Squats,Zercher Squats,Quadriceps,Barbell,Compound
+Zottman_Curl,Zottman Curl,Biceps,Dumbbell,Isolation
+Zottman_Preacher_Curl,Zottman Preacher Curl,Biceps,Dumbbell,Isolation
