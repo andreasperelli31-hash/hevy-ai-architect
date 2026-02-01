@@ -1,0 +1,24 @@
+id,name,muscle_group,equipment,type
+1,Barbell Squat,Legs,Barbell,Compound
+2,Leg Press,Legs,Machine,Compound
+3,Walking Lunge,Legs,Dumbbell,Compound
+4,Leg Extension,Legs,Machine,Isolation
+5,Leg Curl,Legs,Machine,Isolation
+6,Calf Raise,Legs,Barbell,Isolation
+7,Bench Press,Chest,Barbell,Compound
+8,Dumbbell Bench Press,Chest,Dumbbell,Compound
+9,Incline Bench Press,Chest,Barbell,Compound
+10,Chest Fly,Chest,Machine,Isolation
+11,Barbell Rows,Back,Barbell,Compound
+12,Dumbbell Rows,Back,Dumbbell,Compound
+13,Lat Pulldown,Back,Machine,Isolation
+14,Pull-ups,Back,Bodyweight,Compound
+15,Deadlift,Back,Barbell,Compound
+16,Barbell Curl,Biceps,Barbell,Isolation
+17,Dumbbell Curl,Biceps,Dumbbell,Isolation
+18,Tricep Rope Push,Triceps,Cable,Isolation
+19,Close Grip Bench,Triceps,Barbell,Compound
+20,Overhead Press,Shoulders,Barbell,Compound
+21,Lateral Raise,Shoulders,Dumbbell,Isolation
+22,Face Pulls,Shoulders,Cable,Isolation
+23,Shrugs,Shoulders,Barbell,Isolation

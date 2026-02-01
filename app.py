@@ -1,0 +1,518 @@
+import streamlit as st
+import pandas as pd
+import google.genai as genai
+import os
+import json
+from typing import Optional
+
+# File per salvare le preferenze utente
+PREFS_FILE = os.path.join(os.path.dirname(__file__), "user_preferences.json")
+
+def load_preferences():
+    """Carica le preferenze salvate dall'ultimo uso."""
+    defaults = {
+        "goals": ["Ipertrofia (Massa)"],
+        "days": 4,
+        "split_type": "Full Body",
+        "focus_area": [],
+        "equipment_pref": "Con attrezzi",
+        "sex_pref": "Maschio",
+        "age": 30,
+        "training_level": "Beginner",
+        "duration": 60
+    }
+    try:
+        if os.path.exists(PREFS_FILE):
+            with open(PREFS_FILE, "r") as f:
+                saved = json.load(f)
+                defaults.update(saved)
+    except Exception:
+        pass
+    return defaults
+
+def save_preferences(prefs: dict):
+    """Salva le preferenze correnti su file."""
+    try:
+        with open(PREFS_FILE, "w") as f:
+            json.dump(prefs, f)
+    except Exception:
+        pass
+
+def get_api_key():
+    """Ottiene la API key da Streamlit secrets o variabile d'ambiente."""
+    # Prima prova Streamlit secrets (per Streamlit Cloud)
+    try:
+        return st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        pass
+    # Poi prova variabile d'ambiente
+    env_key = os.environ.get("GEMINI_API_KEY")
+    if env_key:
+        return env_key
+    # Fallback a chiave hardcoded (solo per sviluppo locale)
+    return "AIzaSyCgSCdLGmgf_CTqKPozBDIex2_5O_RsmiU"
+
+# Carica preferenze all'avvio
+saved_prefs = load_preferences()
+
+# --- CONFIGURAZIONE ---
+st.set_page_config(page_title="Hevy AI Architect", page_icon="🏋️‍♂️", layout="wide")
+
+# Ottieni API key
+GOOGLE_API_KEY = get_api_key() 
+
+# Configura il modello
+try:
+    client = genai.Client(api_key=GOOGLE_API_KEY)
+except Exception as e:
+    st.error("Chiave API mancante o non valida.")
+
+# Stato iniziale per la scheda generata
+if "plan_md" not in st.session_state:
+    st.session_state["plan_md"] = ""
+
+
+def build_pdf_from_markdown(md_text: str) -> Optional[bytes]:
+    """Crea un PDF dal markdown con supporto migliorato alle tabelle."""
+    try:
+        from fpdf import FPDF
+    except ImportError:
+        st.error("Installa il pacchetto fpdf: pip install fpdf==1.7.2")
+        return None
+
+    pdf = FPDF(orientation='L', format='A4')  # Landscape per tabelle più larghe
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True, margin=10)
+    
+    page_width = pdf.w - pdf.l_margin - pdf.r_margin
+    page_height = pdf.h - pdf.t_margin - pdf.b_margin
+    
+    def clean_markdown(text):
+        """Rimuove i marcatori markdown dal testo."""
+        return text.replace("**", "").replace("*", "").replace("__", "").replace("_", "")
+    
+    def is_bold_text(text):
+        """Controlla se il testo è in grassetto markdown."""
+        return text.strip().startswith("**") and text.strip().endswith("**")
+
+    def estimate_table_height(rows, row_height):
+        """Stima l'altezza totale della tabella."""
+        return len(rows) * row_height + 5
+
+    def render_table(table_lines):
+        # Parse table lines
+        rows = []
+        for line in table_lines:
+            stripped = line.strip()
+            if stripped.startswith("|") and stripped.endswith("|"):
+                cells = stripped.split("|")[1:-1]
+                cells = [cell.strip() for cell in cells]
+                rows.append(cells)
+            elif "|" in stripped:
+                cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+                rows.append(cells)
+        
+        if not rows:
+            return
+        
+        # Remove separator row (dashes like |---|---|)
+        cleaned_rows = []
+        for r in rows:
+            is_separator = all(
+                set(c.replace(" ", "").replace(":", "")) <= set("-") 
+                for c in r if c
+            )
+            if not is_separator:
+                cleaned_rows.append(r)
+        
+        rows = cleaned_rows
+        if not rows:
+            return
+        
+        # Determine column count from header
+        col_count = len(rows[0]) if rows else 5
+        
+        # Fixed column widths for workout tables (5 columns)
+        # Esercizio: 55mm, Serie: 12mm, Ripetizioni: 18mm, Recupero: 16mm, Note: resto (ampia)
+        if col_count == 5:
+            # Esercizio | Serie | Ripetizioni | Recupero | Note Tecniche
+            col_widths = [55, 12, 18, 16, page_width - 101]
+        elif col_count == 4:
+            col_widths = [50, 20, 25, page_width - 95]
+        else:
+            col_widths = [page_width / col_count] * col_count
+        
+        total_width = sum(col_widths)
+        if total_width > page_width:
+            scale = page_width / total_width
+            col_widths = [w * scale for w in col_widths]
+        
+        base_row_height = 5
+        
+        def calc_row_height(row_cells, widths, font_size=6):
+            """Calcola l'altezza necessaria per una riga basata sul testo più lungo."""
+            max_lines = 1
+            for i, cell_text in enumerate(row_cells[:len(widths)]):
+                clean_text = clean_markdown(cell_text)
+                # Stima caratteri per linea basata sulla larghezza colonna
+                chars_per_line = max(1, int(widths[i] / (font_size * 0.4)))
+                if clean_text:
+                    lines_needed = max(1, (len(clean_text) + chars_per_line - 1) // chars_per_line)
+                    max_lines = max(max_lines, lines_needed)
+            return max(base_row_height, max_lines * base_row_height)
+        
+        # Stima altezza tabella
+        table_height = sum(calc_row_height(r, col_widths) for r in rows) + 10
+        space_left = pdf.h - pdf.b_margin - pdf.get_y()
+        
+        # Se la tabella non entra, vai a nuova pagina
+        if table_height > space_left and space_left < page_height * 0.5:
+            pdf.add_page()
+        
+        # Render header
+        pdf.set_font("Arial", "B", 7)
+        pdf.set_fill_color(220, 220, 220)
+        
+        if rows:
+            header = rows[0]
+            while len(header) < len(col_widths):
+                header.append("")
+            for i, cell_text in enumerate(header[:len(col_widths)]):
+                clean_text = clean_markdown(cell_text)
+                pdf.cell(col_widths[i], base_row_height, clean_text, border=1, ln=0, align="C", fill=True)
+            pdf.ln(base_row_height)
+        
+        # Render data rows con supporto multi-linea
+        pdf.set_font("Arial", "", 6)
+        for r in rows[1:]:
+            while len(r) < len(col_widths):
+                r.append("")
+            
+            first_cell = r[0] if r else ""
+            is_section_row = is_bold_text(first_cell)
+            
+            # Calcola altezza riga necessaria
+            row_h = calc_row_height(r, col_widths)
+            
+            # Check if we need a new page for this row
+            if pdf.get_y() + row_h > pdf.h - pdf.b_margin:
+                pdf.add_page()
+                # Reprint header on new page
+                pdf.set_font("Arial", "B", 7)
+                pdf.set_fill_color(220, 220, 220)
+                header = rows[0]
+                for i, cell_text in enumerate(header[:len(col_widths)]):
+                    clean_text = clean_markdown(cell_text)
+                    pdf.cell(col_widths[i], base_row_height, clean_text, border=1, ln=0, align="C", fill=True)
+                pdf.ln(base_row_height)
+                pdf.set_font("Arial", "", 6)
+            
+            # Salva posizione Y iniziale della riga
+            y_start = pdf.get_y()
+            x_start = pdf.l_margin
+            
+            # Prima passa: disegna le celle con bordi e testo
+            for i, cell_text in enumerate(r[:len(col_widths)]):
+                clean_text = clean_markdown(cell_text)
+                
+                if is_section_row and i == 0:
+                    pdf.set_font("Arial", "B", 6)
+                else:
+                    pdf.set_font("Arial", "", 6)
+                
+                # Posiziona alla colonna corretta
+                x_pos = x_start + sum(col_widths[:i])
+                pdf.set_xy(x_pos, y_start)
+                
+                # Disegna bordo cella
+                pdf.rect(x_pos, y_start, col_widths[i], row_h)
+                
+                # Per l'ultima colonna (Note), usa multi_cell per testo lungo
+                if i == len(col_widths) - 1 and len(clean_text) > 30:
+                    pdf.set_xy(x_pos + 1, y_start + 0.5)
+                    # Multi_cell senza bordo, il bordo è già disegnato
+                    old_l_margin = pdf.l_margin
+                    old_r_margin = pdf.r_margin
+                    pdf.set_left_margin(x_pos + 1)
+                    pdf.set_right_margin(pdf.w - x_pos - col_widths[i] + 1)
+                    pdf.multi_cell(col_widths[i] - 2, base_row_height - 1, clean_text, border=0, align="L")
+                    pdf.set_left_margin(old_l_margin)
+                    pdf.set_right_margin(old_r_margin)
+                else:
+                    # Celle normali: tronca se necessario
+                    chars_per_line = max(1, int(col_widths[i] / 2.5))
+                    display_text = clean_text[:chars_per_line] if len(clean_text) > chars_per_line else clean_text
+                    pdf.set_xy(x_pos + 0.5, y_start + (row_h - base_row_height) / 2 + 0.5)
+                    pdf.cell(col_widths[i] - 1, base_row_height, display_text, border=0, ln=0, align="L")
+            
+            # Muovi alla prossima riga
+            pdf.set_y(y_start + row_h)
+        
+        pdf.ln(3)
+
+    # Process markdown
+    pdf.set_font("Arial", "", 10)
+    lines = md_text.splitlines()
+    buffer_table = []
+    
+    for line in lines:
+        stripped = line.strip()
+        
+        # Detect table lines
+        if stripped.startswith("|"):
+            buffer_table.append(line)
+            continue
+        
+        # Flush table buffer if we were in a table
+        if buffer_table:
+            render_table(buffer_table)
+            buffer_table = []
+        
+        # Handle headers
+        if stripped.startswith("###"):
+            pdf.set_font("Arial", "B", 11)
+            clean_text = clean_markdown(stripped.replace("#", "").strip())
+            pdf.multi_cell(0, 6, txt=clean_text)
+            pdf.set_font("Arial", "", 10)
+        elif stripped.startswith("##"):
+            pdf.set_font("Arial", "B", 12)
+            clean_header = clean_markdown(stripped.replace("#", "").strip())
+            pdf.multi_cell(0, 7, txt=clean_header)
+            pdf.set_font("Arial", "", 10)
+        elif stripped.startswith("#"):
+            pdf.set_font("Arial", "B", 14)
+            clean_header = clean_markdown(stripped.replace("#", "").strip())
+            pdf.multi_cell(0, 8, txt=clean_header)
+            pdf.set_font("Arial", "", 10)
+        elif stripped.startswith("---"):
+            pdf.ln(2)
+            pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
+            pdf.ln(2)
+        elif stripped:
+            # Check if text is bold
+            if is_bold_text(stripped):
+                pdf.set_font("Arial", "B", 10)
+                clean_text = clean_markdown(stripped)
+                pdf.multi_cell(0, 5, txt=clean_text)
+                pdf.set_font("Arial", "", 10)
+            else:
+                clean_text = clean_markdown(stripped)
+                pdf.multi_cell(0, 5, txt=clean_text)
+        else:
+            pdf.ln(2)
+    
+    # Flush any remaining table
+    if buffer_table:
+        render_table(buffer_table)
+
+    return pdf.output(dest="S").encode("latin-1")
+
+# --- CARICAMENTO DATABASE ---
+import os
+
+# Funzione per ottenere il primo modello che supporta generateContent
+@st.cache_data
+def get_available_model():
+    try:
+        models = list(client.models.list())
+        for model in models:
+            actions = getattr(model, "supported_actions", [])
+            if "generateContent" in actions:
+                return model.name.split("/")[-1]
+        # Fallback a un modello generico
+        return "gemini-2.5-flash"
+    except Exception as e:
+        st.warning(f"Impossibile listare i modelli: {e}")
+        return "gemini-2.5-flash"
+
+@st.cache_data
+def load_data():
+    try:
+        # Usa il percorso assoluto del file
+        csv_path = os.path.join(os.path.dirname(__file__), "exercises_db.csv")
+        return pd.read_csv(csv_path)
+    except Exception as e:
+        st.error(f"Errore nel caricamento del CSV: {e}")
+        return pd.DataFrame()
+
+df_exercises = load_data()
+
+# --- INTERFACCIA UTENTE ---
+st.title("🏋️‍♂️ Hevy AI Architect")
+st.markdown("Generatore di schede di allenamento basate sul database reale di Hevy.")
+
+# Liste opzioni
+GOALS_OPTIONS = ["Ipertrofia (Massa)", "Dimagrimento (Cutting)", "Forza Pura", "Miglioramento Posturale"]
+SPLIT_OPTIONS = ["Full Body", "Upper/Lower", "Push/Pull/Legs", "Bro Split (Gruppi Singoli)"]
+EQUIPMENT_OPTIONS = ["Con attrezzi", "Senza attrezzi"]
+SEX_OPTIONS = ["Maschio", "Femmina"]
+LEVEL_OPTIONS = ["Beginner", "Intermediate", "Pro"]
+
+with st.sidebar:
+    st.header("1. I tuoi Obiettivi")
+    
+    # Filtra goals salvati che sono ancora validi
+    default_goals = [g for g in saved_prefs.get("goals", []) if g in GOALS_OPTIONS]
+    if not default_goals:
+        default_goals = ["Ipertrofia (Massa)"]
+    
+    goals = st.multiselect(
+        "Obiettivi (seleziona uno o più)",
+        GOALS_OPTIONS,
+        default=default_goals
+    )
+    if not goals:
+        goals = ["Equilibrato"]
+    
+    days = st.slider("Giorni a settimana", 2, 6, saved_prefs.get("days", 4))
+    
+    split_idx = SPLIT_OPTIONS.index(saved_prefs.get("split_type", "Full Body")) if saved_prefs.get("split_type") in SPLIT_OPTIONS else 0
+    split_type = st.selectbox("Tipo di Split", SPLIT_OPTIONS, index=split_idx)
+    
+    st.header("2. Dettagli")
+    if not df_exercises.empty and 'muscle_group' in df_exercises.columns:
+        muscle_options = list(df_exercises['muscle_group'].unique())
+        default_focus = [f for f in saved_prefs.get("focus_area", []) if f in muscle_options]
+        focus_area = st.multiselect("Focus Muscolare (Opzionale)", muscle_options, default=default_focus)
+    else:
+        focus_area = []
+        st.warning("Nessun dato disponibile per il filtro muscolare")
+    
+    equip_idx = EQUIPMENT_OPTIONS.index(saved_prefs.get("equipment_pref", "Con attrezzi")) if saved_prefs.get("equipment_pref") in EQUIPMENT_OPTIONS else 0
+    equipment_pref = st.selectbox("Attrezzatura", EQUIPMENT_OPTIONS, index=equip_idx)
+    
+    sex_idx = SEX_OPTIONS.index(saved_prefs.get("sex_pref", "Maschio")) if saved_prefs.get("sex_pref") in SEX_OPTIONS else 0
+    sex_pref = st.selectbox("Sesso", SEX_OPTIONS, index=sex_idx)
+    
+    age = st.slider("Età", 16, 80, saved_prefs.get("age", 30))
+    
+    level_idx = LEVEL_OPTIONS.index(saved_prefs.get("training_level", "Beginner")) if saved_prefs.get("training_level") in LEVEL_OPTIONS else 0
+    training_level = st.selectbox("Livello", LEVEL_OPTIONS, index=level_idx)
+    
+    duration = st.slider("Durata seduta (min)", 30, 90, saved_prefs.get("duration", 60))
+    
+    generate_btn = st.button("Genera Scheda AI 🧠", type="primary")
+
+# --- LOGICA AI ---
+if generate_btn:
+    # Salva le preferenze correnti
+    current_prefs = {
+        "goals": goals if goals != ["Equilibrato"] else ["Ipertrofia (Massa)"],
+        "days": days,
+        "split_type": split_type,
+        "focus_area": focus_area,
+        "equipment_pref": equipment_pref,
+        "sex_pref": sex_pref,
+        "age": age,
+        "training_level": training_level,
+        "duration": duration
+    }
+    save_preferences(current_prefs)
+    
+    if df_exercises.empty:
+        st.error("Errore: Il file 'exercises_db.csv' non è stato trovato!")
+    else:
+        with st.spinner("L'IA sta analizzando la biomeccanica e costruendo il programma..."):
+            
+            # 1. Creiamo il contesto per l'IA (Prompt Engineering Avanzato)
+            # Trasformiamo il dataframe in una stringa di testo per darlo in pasto all'IA
+            exercises_list_str = df_exercises.to_string(index=False)
+            
+            prompt = f"""
+            Agisci come un Coach Esperto di biomeccanica e fisiologia sportiva.
+            Il tuo compito è creare una scheda di allenamento di {days} giorni a settimana.
+            
+            OBIETTIVI UTENTE: {", ".join(goals)}
+            TIPO DI SPLIT: {split_type}
+            DURATA MEDIA: {duration} minuti
+            FOCUS MUSCOLARE RICHIESTO: {", ".join(focus_area) if focus_area else "Equilibrato"}
+            ATTREZZATURA: {equipment_pref} (Con attrezzi → prediligi bilancieri, manubri, macchine; Senza attrezzi → prediligi corpo libero / elastici / varianti home)
+            SESSO: {sex_pref} (seleziona varianti ed esercizi adeguati a comfort articolare e preferenze tipiche)
+            ETA': {age} (adatta volume e intensità con progressioni adeguate all'età, cura mobilità e gestione carichi)
+            LIVELLO: {training_level} (Beginner: esercizi facili e stabili; Intermediate: esercizi intermedi con varianti controllate; Pro: esercizi complessi, carichi più alti, maggior densità)
+            
+            VINCOLO FONDAMENTALE:
+            Devi usare SOLO ed ESCLUSIVAMENTE gli esercizi presenti nel seguente database CSV. 
+            Non inventare esercizi che non sono in questa lista.
+            
+            DATABASE ESERCIZI DISPONIBILI:
+            {exercises_list_str}
+            
+            FORMATO OUTPUT RICHIESTO:
+            Restituisci una risposta strutturata in Markdown.
+            Per ogni Giorno (Giorno 1, Giorno 2...), elenca gli esercizi in una tabella con queste colonne:
+            | Esercizio | Serie | Ripetizioni | Recupero | Note Tecniche |
+            
+            Logica da applicare:
+            - Se l'obiettivo è Dimagrimento: Ripetizioni alte (12-15), recuperi brevi (60s).
+            - Se l'obiettivo è Ipertrofia: Ripetizioni medie (8-12), recuperi medi (90s).
+            - Se l'obiettivo è Forza: Ripetizioni basse (3-5), recuperi lunghi (120s+).
+            - Includi note sulla postura o l'esecuzione corretta.
+
+            Ordine fisiologicamente corretto degli esercizi per ogni giorno:
+            1) Warm-up / attivazione specifica
+            2) Multarticolari pesanti (bilanciere / macchina) su pattern principali del giorno
+            3) Unilaterali / stabilità
+            4) Complementari / isolamento mirato
+            5) Core / finisher metabolico (facoltativo)
+
+            Adatta la difficoltà in base al livello:
+            - Beginner: versioni stabili (macchine / bilanciere guidato), range moderato di carico, tecnica semplice, progressioni lineari.
+            - Intermediate: introduci varianti con maggiore ROM o instabilità controllata, gestione RIR 1-3, carichi moderati-alti.
+            - Pro: esercizi complessi (bilanciere libero, varianti avanzate), superset opzionali, RIR 0-2 su esercizi principali.
+
+            Adatta gli esercizi in base all'attrezzatura:
+            - Con attrezzi: priorità a bilancieri, manubri, macchine; corpo libero solo come complemento.
+            - Senza attrezzi: priorità a corpo libero, elastici, isometrie, varianti plyo controllate; evita macchine/pesi se non disponibili.
+
+            Adatta in base al sesso:
+            - Maschio: non serve modificare i carichi target, ma cura la progressione su pattern principali (spinta/tiro/gambe) senza trascurare mobilità.
+            - Femmina: includi focus su catena posteriore e glutei se coerente con gli obiettivi, prediligi varianti che riducano stress articolare su spalle/lombare.
+
+            Restituisci output conciso, solo Markdown.
+            """
+            
+            try:
+                # 2. Chiamata all'IA - Usa il modello disponibile
+                model_to_use = get_available_model()
+                response = client.models.generate_content(
+                    model=model_to_use,
+                    contents=prompt
+                )
+                
+                # 3. Estrai il testo dalla risposta (gestisce diversi formati API)
+                result_text = None
+                if hasattr(response, 'text') and response.text:
+                    result_text = response.text
+                elif hasattr(response, 'candidates') and response.candidates:
+                    candidate = response.candidates[0]
+                    if hasattr(candidate, 'content') and candidate.content:
+                        if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                            result_text = candidate.content.parts[0].text
+                
+                if result_text:
+                    st.success("Scheda generata con successo! Copiala su Hevy.")
+                    st.markdown(result_text)
+                    # salva per esportazione
+                    st.session_state["plan_md"] = result_text
+                else:
+                    st.error("La risposta dell'AI è vuota. Riprova.")
+                    st.write("Debug response:", response)
+                
+            except Exception as e:
+                st.error(f"Errore durante la generazione: {e}")
+
+# --- VISUALIZZAZIONE DATABASE (Opzionale) ---
+with st.expander("Vedi Database Esercizi Caricato"):
+    st.dataframe(df_exercises)
+
+# --- ESPORTAZIONE PDF ---
+if st.session_state.get("plan_md"):
+    pdf_bytes = build_pdf_from_markdown(st.session_state["plan_md"])
+    if pdf_bytes:
+        st.download_button(
+            "Scarica scheda in PDF",
+            data=pdf_bytes,
+            file_name="scheda_allenamento.pdf",
+            mime="application/pdf"
+        )
