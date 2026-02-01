@@ -1376,12 +1376,34 @@ if generate_btn:
 
 # --- ESPORTAZIONE PDF ---
 if st.session_state.get("plan_md"):
-    # Mostra la scheda generata
+    # Mostra la scheda generata con ID per lo scroll
     st.markdown("---")
-    st.markdown("## 📋 La Tua Scheda di Allenamento")
+    st.markdown('<h2 id="scheda-risultato">📋 La Tua Scheda di Allenamento</h2>', unsafe_allow_html=True)
     st.markdown('<div class="result-card">', unsafe_allow_html=True)
     st.markdown(st.session_state["plan_md"])
     st.markdown('</div>', unsafe_allow_html=True)
+    
+    # JavaScript per scroll automatico verso la scheda (usa components.html per affidabilità)
+    scroll_js = '''
+    <script>
+        // Scroll automatico verso la scheda generata
+        setTimeout(function() {
+            var element = window.parent.document.getElementById('scheda-risultato');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                // Fallback: cerca per testo
+                var headers = window.parent.document.querySelectorAll('h2');
+                headers.forEach(function(h) {
+                    if (h.textContent.includes('La Tua Scheda')) {
+                        h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        }, 500);
+    </script>
+    '''
+    components.html(scroll_js, height=0)
     
     # Pulsante download PDF
     st.markdown("---")
