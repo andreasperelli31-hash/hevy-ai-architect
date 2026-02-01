@@ -219,10 +219,20 @@ st.markdown("""
     /* ===== SLIDER ===== */
     .stSlider > div > div > div {
         background-color: #FF6B6B !important;
+        border-radius: 10px !important;
     }
     
     .stSlider [data-baseweb="slider"] {
         background-color: rgba(255,107,107,0.3) !important;
+        border-radius: 10px !important;
+    }
+    
+    .stSlider [data-baseweb="slider"] > div {
+        border-radius: 10px !important;
+    }
+    
+    .stSlider [data-baseweb="slider"] > div > div {
+        border-radius: 10px !important;
     }
     
     /* ===== TABELLE ===== */
@@ -267,7 +277,13 @@ st.markdown("""
         background: #1f2b47 !important;
         border-radius: 8px;
         color: #FFFFFF !important;
-        font-weight: 500;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+    }
+    
+    .streamlit-expanderHeader p, .streamlit-expanderHeader span {
+        color: #FFB347 !important;
+        font-weight: 600 !important;
     }
     
     .streamlit-expanderContent {
@@ -760,6 +776,7 @@ LEVEL_OPTIONS = ["Principiante", "Esperto", "Super Esperto"]
 MUSCLE_TRANSLATION = {
     "Chest": "Petto",
     "Back": "Schiena",
+    "Middle Back": "Dorsali",
     "Shoulders": "Spalle",
     "Biceps": "Bicipiti",
     "Triceps": "Tricipiti",
@@ -769,6 +786,7 @@ MUSCLE_TRANSLATION = {
     "Glutes": "Glutei",
     "Calves": "Polpacci",
     "Abs": "Addominali",
+    "Abdominals": "Addominali",
     "Core": "Core",
     "Forearms": "Avambracci",
     "Traps": "Trapezio",
@@ -776,6 +794,9 @@ MUSCLE_TRANSLATION = {
     "Lower Back": "Lombari",
     "Full Body": "Tutto il Corpo",
     "Cardio": "Cardio",
+    "Neck": "Collo",
+    "Abductors": "Abduttori",
+    "Adductors": "Adduttori",
     "Other": "Altro"
 }
 
@@ -819,7 +840,7 @@ with st.sidebar:
     days = st.slider("📅 Giorni a settimana", 2, 6, saved_prefs.get("days", 4))
     
     split_idx = SPLIT_OPTIONS.index(saved_prefs.get("split_type", "Full Body")) if saved_prefs.get("split_type") in SPLIT_OPTIONS else 0
-    split_type = st.selectbox("📋 Tipo di Split", SPLIT_OPTIONS, index=split_idx)
+    split_type = st.selectbox("📋 Divisione lavoro giornaliero", SPLIT_OPTIONS, index=split_idx)
     
     st.markdown("---")
     st.markdown("## 👤 Profilo Personale")
@@ -1022,7 +1043,6 @@ if st.session_state.get("plan_md"):
             )
 
 # --- VISUALIZZAZIONE DATABASE (Opzionale) ---
-st.markdown('<style>.streamlit-expanderHeader p { color: #FFB347 !important; font-weight: 600 !important; }</style>', unsafe_allow_html=True)
 with st.expander("📚 Vedi Database Esercizi"):
     st.dataframe(df_exercises, use_container_width=True)
 
