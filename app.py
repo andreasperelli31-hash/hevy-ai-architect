@@ -405,11 +405,12 @@ st.markdown("""
     .gallery-container {
         display: flex;
         justify-content: center;
-        align-items: center;
-        gap: 30px;
+        align-items: stretch;
+        gap: 20px;
         margin: 2rem auto;
         padding: 20px;
-        max-width: 900px;
+        width: 100%;
+        max-width: 1400px;
     }
     
     .gallery-image {
@@ -423,6 +424,8 @@ st.markdown("""
         animation: fadeInUp 1s ease-out forwards;
         opacity: 0;
         transform: translateY(20px);
+        flex: 1;
+        max-width: 48%;
     }
     
     .gallery-image:nth-child(1) {
@@ -436,7 +439,6 @@ st.markdown("""
     .gallery-image img {
         display: block;
         width: 100%;
-        max-width: 400px;
         height: auto;
         border-radius: 13px;
         transition: transform 0.4s ease;
