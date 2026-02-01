@@ -673,11 +673,8 @@ def load_data():
 df_exercises = load_data()
 
 # --- INTERFACCIA UTENTE ---
-# Header professionale
-st.markdown('<h1 class="main-header">🏋️ Hevy AI Architect</h1>', unsafe_allow_html=True)
-st.markdown('<p class="sub-header">Genera schede di allenamento personalizzate con l\'intelligenza artificiale</p>', unsafe_allow_html=True)
 
-# Indicatore mobile per aprire il menu (solo su mobile)
+# Indicatore mobile per aprire il menu (solo su mobile) - SOPRA IL TITOLO
 st.markdown("""
 <style>
     .mobile-hint {
@@ -688,17 +685,17 @@ st.markdown("""
         .mobile-hint {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, rgba(255,75,75,0.15) 0%, rgba(255,107,107,0.1) 100%);
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(255,75,75,0.2) 0%, rgba(255,107,107,0.15) 100%);
             border: 2px solid #FF4B4B;
             border-radius: 12px;
-            padding: 12px 16px;
-            margin: 10px 0 20px 0;
+            padding: 14px 18px;
+            margin: 0 0 15px 0;
             animation: pulse-border 2s infinite;
         }
         
         .mobile-hint-arrow {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #FF4B4B;
             animation: bounce-left 1s infinite;
         }
@@ -711,6 +708,7 @@ st.markdown("""
         
         .mobile-hint-text strong {
             color: #FF6B6B;
+            font-size: 1.1rem;
         }
         
         @keyframes bounce-left {
@@ -727,10 +725,16 @@ st.markdown("""
 
 <div class="mobile-hint">
     <span class="mobile-hint-arrow">↖️</span>
-    <span class="mobile-hint-text">Tocca <strong>≡</strong> in alto a sinistra per configurare il tuo allenamento!</span>
+    <span class="mobile-hint-text">Tocca <strong>>></strong> in alto a sinistra per iniziare!</span>
 </div>
 """, unsafe_allow_html=True)
 
+# Header professionale
+st.markdown('<h1 class="main-header">🏋️ Hevy AI Architect</h1>', unsafe_allow_html=True)
+st.markdown('<p class="sub-header">Genera schede di allenamento personalizzate con l\'intelligenza artificiale</p>', unsafe_allow_html=True)
+
+# Statistiche database
+# (mobile hint già inserito sopra)
 # Statistiche database
 col_stat1, col_stat2, col_stat3 = st.columns(3)
 with col_stat1:
@@ -1018,6 +1022,7 @@ if st.session_state.get("plan_md"):
             )
 
 # --- VISUALIZZAZIONE DATABASE (Opzionale) ---
+st.markdown('<style>.streamlit-expanderHeader p { color: #FFB347 !important; font-weight: 600 !important; }</style>', unsafe_allow_html=True)
 with st.expander("📚 Vedi Database Esercizi"):
     st.dataframe(df_exercises, use_container_width=True)
 
@@ -1026,6 +1031,6 @@ st.markdown("---")
 st.markdown("""
 <div class="footer">
     <p>🏋️ <strong>Hevy AI Architect</strong> • Powered by Google Gemini AI</p>
-    <p>Creato con ❤️ per gli appassionati di fitness</p>
+    <p>Creato con ❤️ da Stefano Pisani</p>
 </div>
 """, unsafe_allow_html=True)
