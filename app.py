@@ -284,6 +284,35 @@ st.markdown("""
         background-color: rgba(255, 75, 75, 0.15) !important;
     }
     
+    /* ===== SPINNER / LOADING ===== */
+    .stSpinner > div {
+        color: #FFFFFF !important;
+    }
+    
+    .stSpinner > div > span {
+        color: #FFFFFF !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Testo generico nell'area principale */
+    .stMarkdown, .stMarkdown p, .stMarkdown span {
+        color: #E8E8E8 !important;
+    }
+    
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
+        color: #FFFFFF !important;
+    }
+    
+    /* Alert/Info boxes */
+    .stAlert, [data-testid="stNotification"] {
+        color: #FFFFFF !important;
+    }
+    
+    .stAlert p, [data-testid="stNotification"] p {
+        color: #FFFFFF !important;
+    }
+    
     /* ===== RISULTATI ===== */
     .result-card {
         background: linear-gradient(145deg, #1f2b47 0%, #16213e 100%);
@@ -331,10 +360,15 @@ st.markdown("""
     .footer {
         text-align: center;
         padding: 2rem;
-        color: #B0B0B0;
-        font-size: 0.85rem;
+        color: #D0D0D0;
+        font-size: 0.9rem;
         margin-top: 3rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    .footer p {
+        color: #D0D0D0 !important;
+        margin: 0.3rem 0;
     }
     
     .footer strong {
