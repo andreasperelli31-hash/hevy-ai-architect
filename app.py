@@ -479,6 +479,57 @@ st.markdown("""
             max-width: 100%;
         }
     }
+    
+    /* ===== GALLERY FOOTER (dopo generazione scheda) ===== */
+    .gallery-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 1rem auto;
+        padding: 15px;
+        max-width: 600px;
+        animation: slideDownFade 0.8s ease-out forwards;
+    }
+    
+    .gallery-footer .gallery-image {
+        flex: 1;
+        max-width: 280px;
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .gallery-footer .gallery-image img {
+        max-height: 180px;
+        object-fit: cover;
+    }
+    
+    @keyframes slideDownFade {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-footer {
+            flex-direction: row;
+            gap: 10px;
+        }
+        
+        .gallery-footer .gallery-image {
+            max-width: 45%;
+        }
+        
+        .gallery-footer .gallery-image img {
+            max-height: 120px;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -895,11 +946,12 @@ if not os.path.exists(photo31_path):
 photo30_b64 = get_image_base64(photo30_path)
 photo31_b64 = get_image_base64(photo31_path)
 
-if photo30_b64 and photo31_b64:
-    # Determina il tipo MIME in base all'estensione
-    ext30 = "png" if photo30_path.endswith(".png") else "jpeg"
-    ext31 = "png" if photo31_path.endswith(".png") else "jpeg"
-    
+# Determina il tipo MIME in base all'estensione
+ext30 = "png" if photo30_path.endswith(".png") else "jpeg"
+ext31 = "png" if photo31_path.endswith(".png") else "jpeg"
+
+# Mostra galleria grande solo se NON c'è una scheda generata
+if photo30_b64 and photo31_b64 and not st.session_state.get("plan_md"):
     st.markdown(f'''
     <div class="gallery-container">
         <div class="gallery-image">
@@ -1198,6 +1250,19 @@ if st.session_state.get("plan_md"):
                 mime="application/pdf",
                 use_container_width=True
             )
+    
+    # Galleria immagini spostata a piè pagina con animazione
+    if photo30_b64 and photo31_b64:
+        st.markdown(f'''
+        <div class="gallery-footer">
+            <div class="gallery-image">
+                <img src="data:image/{ext30};base64,{photo30_b64}" alt="Fitness Training">
+            </div>
+            <div class="gallery-image">
+                <img src="data:image/{ext31};base64,{photo31_b64}" alt="Workout">
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
 
 # --- VISUALIZZAZIONE DATABASE (Opzionale) ---
 with st.expander("📚 Vedi Database Esercizi"):
