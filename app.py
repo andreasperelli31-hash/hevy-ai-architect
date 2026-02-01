@@ -49,8 +49,8 @@ def get_api_key():
     env_key = os.environ.get("GEMINI_API_KEY")
     if env_key:
         return env_key
-    # Fallback a chiave hardcoded (solo per sviluppo locale)
-    return "AIzaSyCgSCdLGmgf_CTqKPozBDIex2_5O_RsmiU"
+    # Nessuna chiave trovata
+    return None
 
 # Carica preferenze all'avvio
 saved_prefs = load_preferences()
@@ -59,13 +59,19 @@ saved_prefs = load_preferences()
 st.set_page_config(page_title="Hevy AI Architect", page_icon="🏋️‍♂️", layout="wide")
 
 # Ottieni API key
-GOOGLE_API_KEY = get_api_key() 
+GOOGLE_API_KEY = get_api_key()
+
+# Verifica che la chiave sia configurata
+if not GOOGLE_API_KEY:
+    st.error("⚠️ API Key non configurata! Aggiungi GEMINI_API_KEY nei secrets di Streamlit Cloud o come variabile d'ambiente.")
+    st.stop()
 
 # Configura il modello
 try:
     client = genai.Client(api_key=GOOGLE_API_KEY)
 except Exception as e:
-    st.error("Chiave API mancante o non valida.")
+    st.error(f"Errore configurazione API: {e}")
+    st.stop()
 
 # Stato iniziale per la scheda generata
 if "plan_md" not in st.session_state:
