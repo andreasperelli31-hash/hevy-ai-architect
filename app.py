@@ -1368,11 +1368,22 @@ if generate_btn:
                 st.session_state["plan_md"] = result_text
             else:
                 st.error("❌ La risposta dell'AI è vuota. Riprova.")
-                st.write("Debug response:", response)
             
         except Exception as e:
             spinner_placeholder.empty()
-            st.error(f"❌ Errore durante la generazione: {e}")
+            # Messaggio user-friendly per errori API (rate limit, quota, ecc.)
+            st.markdown('''
+            <div style="background: linear-gradient(135deg, rgba(255,50,50,0.2) 0%, rgba(180,30,30,0.15) 100%); 
+                        border: 2px solid #FF3333; 
+                        border-radius: 12px; 
+                        padding: 20px; 
+                        text-align: center;
+                        margin: 1rem 0;">
+                <span style="font-size: 3rem;">❌</span>
+                <h3 style="color: #FF6B6B; margin: 10px 0;">Limite sessioni raggiunto</h3>
+                <p style="color: #E0E0E0; font-size: 1rem;">Riprova tra qualche ora...</p>
+            </div>
+            ''', unsafe_allow_html=True)
 
 # --- ESPORTAZIONE PDF ---
 if st.session_state.get("plan_md"):
